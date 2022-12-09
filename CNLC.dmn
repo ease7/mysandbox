@@ -1,31 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="rules.CNLC.RuleEngine.dmn" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_A3B3933B-01A7-4F2C-817D-F2A59742B76A" name="CNLC" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="rules.CNLC.RuleEngine.dmn">
   <dmn:extensionElements/>
+  <dmn:inputData id="_34CB0A89-031B-4FFB-8439-5D2F3794991A" name="肝功能">
+    <dmn:extensionElements/>
+    <dmn:variable id="_DB801D32-6162-4B34-90A7-A6BD179F214A" name="肝功能" typeRef="string"/>
+  </dmn:inputData>
+  <dmn:inputData id="_6C6E9B5B-E8DA-427D-818C-8175529B8530" name="肝外转移">
+    <dmn:extensionElements/>
+    <dmn:variable id="_EBFAD6DF-A48A-489C-9979-B61748B74AED" name="肝外转移" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:inputData id="_07B16A18-ED5B-45BA-8AEA-06F473290EFF" name="影像学可见脉管癌栓">
+    <dmn:extensionElements/>
+    <dmn:variable id="_D432B463-6114-4B66-9321-69F2C4D63EB9" name="影像学可见脉管癌栓" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:inputData id="_7E8628B6-E92A-4A18-B471-5AF1575D54DF" name="肿瘤数目">
+    <dmn:extensionElements/>
+    <dmn:variable id="_77C36E34-610B-45A2-BE09-049BA79C13A1" name="肿瘤数目" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:inputData id="_823C967F-76E3-41F9-9B69-491E06C3B39D" name="肿瘤大小">
+    <dmn:extensionElements/>
+    <dmn:variable id="_7F8A90FF-1F29-4584-8B98-5ED0FCA1C4DB" name="肿瘤大小" typeRef="number"/>
+  </dmn:inputData>
   <dmn:inputData id="_2FAF3371-9BC7-424C-99AD-683E3583ADB1" name="全身状况">
     <dmn:extensionElements/>
     <dmn:variable id="_B2D24A22-F44C-4BF0-B194-C4C42451D5F6" name="全身状况" typeRef="number"/>
   </dmn:inputData>
   <dmn:decision id="_FEDAB932-D303-490C-91E6-A31C28AF8461" name="CNLC分期">
-    <dmn:description>输入必填内容获取患者CNLC分期</dmn:description>
     <dmn:extensionElements/>
     <dmn:variable id="_64158FC1-DB4C-4B91-98BC-77E2E840EC58" name="CNLC分期" typeRef="string"/>
-    <dmn:informationRequirement id="_4612D716-F1D7-494D-A49E-4BCA8600FC53">
-      <dmn:requiredInput href="#_07B16A18-ED5B-45BA-8AEA-06F473290EFF"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_25536C35-3A1A-4CF6-8D92-089174C76678">
       <dmn:requiredInput href="#_2FAF3371-9BC7-424C-99AD-683E3583ADB1"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_C3B9CE55-3A83-4B47-84CE-94C7C1F3390B">
-      <dmn:requiredInput href="#_34CB0A89-031B-4FFB-8439-5D2F3794991A"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_1EC2C7C5-7306-4AE9-ADD5-1595D2BDE71C">
-      <dmn:requiredInput href="#_6C6E9B5B-E8DA-427D-818C-8175529B8530"/>
+    <dmn:informationRequirement id="_07EF4767-E6D5-4CEA-BE53-7030F0298E65">
+      <dmn:requiredInput href="#_823C967F-76E3-41F9-9B69-491E06C3B39D"/>
     </dmn:informationRequirement>
     <dmn:informationRequirement id="_AF6424DD-2A20-4DFA-9F34-9BD607633188">
       <dmn:requiredInput href="#_7E8628B6-E92A-4A18-B471-5AF1575D54DF"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_07EF4767-E6D5-4CEA-BE53-7030F0298E65">
-      <dmn:requiredInput href="#_823C967F-76E3-41F9-9B69-491E06C3B39D"/>
+    <dmn:informationRequirement id="_1EC2C7C5-7306-4AE9-ADD5-1595D2BDE71C">
+      <dmn:requiredInput href="#_6C6E9B5B-E8DA-427D-818C-8175529B8530"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_C3B9CE55-3A83-4B47-84CE-94C7C1F3390B">
+      <dmn:requiredInput href="#_34CB0A89-031B-4FFB-8439-5D2F3794991A"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_4612D716-F1D7-494D-A49E-4BCA8600FC53">
+      <dmn:requiredInput href="#_07B16A18-ED5B-45BA-8AEA-06F473290EFF"/>
     </dmn:informationRequirement>
     <dmn:decisionTable id="_C9DDD23D-6D8D-4B67-B70C-312D02AAB2EA" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
       <dmn:input id="_C6491AC9-D692-48EC-A2A9-85EED0507246">
@@ -296,51 +315,23 @@
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
-  <dmn:inputData id="_34CB0A89-031B-4FFB-8439-5D2F3794991A" name="肝功能">
-    <dmn:extensionElements/>
-    <dmn:variable id="_DB801D32-6162-4B34-90A7-A6BD179F214A" name="肝功能" typeRef="string"/>
-  </dmn:inputData>
-  <dmn:inputData id="_6C6E9B5B-E8DA-427D-818C-8175529B8530" name="肝外转移">
-    <dmn:extensionElements/>
-    <dmn:variable id="_EBFAD6DF-A48A-489C-9979-B61748B74AED" name="肝外转移" typeRef="boolean"/>
-  </dmn:inputData>
-  <dmn:inputData id="_07B16A18-ED5B-45BA-8AEA-06F473290EFF" name="影像学可见脉管癌栓">
-    <dmn:extensionElements/>
-    <dmn:variable id="_D432B463-6114-4B66-9321-69F2C4D63EB9" name="影像学可见脉管癌栓" typeRef="boolean"/>
-  </dmn:inputData>
-  <dmn:inputData id="_7E8628B6-E92A-4A18-B471-5AF1575D54DF" name="肿瘤数目">
-    <dmn:extensionElements/>
-    <dmn:variable id="_77C36E34-610B-45A2-BE09-049BA79C13A1" name="肿瘤数目" typeRef="number"/>
-  </dmn:inputData>
-  <dmn:inputData id="_823C967F-76E3-41F9-9B69-491E06C3B39D" name="肿瘤大小">
-    <dmn:extensionElements/>
-    <dmn:variable id="_7F8A90FF-1F29-4584-8B98-5ED0FCA1C4DB" name="肿瘤大小" typeRef="number"/>
-  </dmn:inputData>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="_2248A8F4-6CB5-4FFA-B62D-E9226016FF8B" name="DRG">
       <di:extension>
         <kie:ComponentsWidthsExtension>
-          <kie:ComponentWidths dmnElementRef="_C9DDD23D-6D8D-4B67-B70C-312D02AAB2EA"/>
+          <kie:ComponentWidths dmnElementRef="_C9DDD23D-6D8D-4B67-B70C-312D02AAB2EA">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
-      <dmndi:DMNShape id="dmnshape-drg-_2FAF3371-9BC7-424C-99AD-683E3583ADB1" dmnElementRef="_2FAF3371-9BC7-424C-99AD-683E3583ADB1" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="358" y="82" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-drg-_FEDAB932-D303-490C-91E6-A31C28AF8461" dmnElementRef="_FEDAB932-D303-490C-91E6-A31C28AF8461" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="495" y="236" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-drg-_34CB0A89-031B-4FFB-8439-5D2F3794991A" dmnElementRef="_34CB0A89-031B-4FFB-8439-5D2F3794991A" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -386,28 +377,46 @@
         <dc:Bounds x="357.5981308411215" y="372" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNEdge id="dmnedge-drg-_4612D716-F1D7-494D-A49E-4BCA8600FC53" dmnElementRef="_4612D716-F1D7-494D-A49E-4BCA8600FC53">
-        <di:waypoint x="696" y="397"/>
-        <di:waypoint x="545" y="261"/>
-      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="dmnshape-drg-_2FAF3371-9BC7-424C-99AD-683E3583ADB1" dmnElementRef="_2FAF3371-9BC7-424C-99AD-683E3583ADB1" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="358" y="82" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_FEDAB932-D303-490C-91E6-A31C28AF8461" dmnElementRef="_FEDAB932-D303-490C-91E6-A31C28AF8461" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="495" y="236" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNEdge id="dmnedge-drg-_25536C35-3A1A-4CF6-8D92-089174C76678" dmnElementRef="_25536C35-3A1A-4CF6-8D92-089174C76678">
         <di:waypoint x="408" y="107"/>
         <di:waypoint x="545" y="261"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-drg-_C3B9CE55-3A83-4B47-84CE-94C7C1F3390B" dmnElementRef="_C3B9CE55-3A83-4B47-84CE-94C7C1F3390B">
-        <di:waypoint x="544.2990654205607" y="107"/>
-        <di:waypoint x="545" y="261"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-drg-_1EC2C7C5-7306-4AE9-ADD5-1595D2BDE71C" dmnElementRef="_1EC2C7C5-7306-4AE9-ADD5-1595D2BDE71C">
-        <di:waypoint x="696" y="107"/>
+      <dmndi:DMNEdge id="dmnedge-drg-_07EF4767-E6D5-4CEA-BE53-7030F0298E65" dmnElementRef="_07EF4767-E6D5-4CEA-BE53-7030F0298E65">
+        <di:waypoint x="407.5981308411215" y="397"/>
         <di:waypoint x="545" y="261"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_AF6424DD-2A20-4DFA-9F34-9BD607633188" dmnElementRef="_AF6424DD-2A20-4DFA-9F34-9BD607633188">
         <di:waypoint x="546" y="397.3421052631579"/>
         <di:waypoint x="545" y="261"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-drg-_07EF4767-E6D5-4CEA-BE53-7030F0298E65" dmnElementRef="_07EF4767-E6D5-4CEA-BE53-7030F0298E65">
-        <di:waypoint x="407.5981308411215" y="397"/>
+      <dmndi:DMNEdge id="dmnedge-drg-_1EC2C7C5-7306-4AE9-ADD5-1595D2BDE71C" dmnElementRef="_1EC2C7C5-7306-4AE9-ADD5-1595D2BDE71C">
+        <di:waypoint x="696" y="107"/>
+        <di:waypoint x="545" y="261"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_C3B9CE55-3A83-4B47-84CE-94C7C1F3390B" dmnElementRef="_C3B9CE55-3A83-4B47-84CE-94C7C1F3390B">
+        <di:waypoint x="544.2990654205607" y="107"/>
+        <di:waypoint x="545" y="261"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_4612D716-F1D7-494D-A49E-4BCA8600FC53" dmnElementRef="_4612D716-F1D7-494D-A49E-4BCA8600FC53">
+        <di:waypoint x="696" y="397"/>
         <di:waypoint x="545" y="261"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>

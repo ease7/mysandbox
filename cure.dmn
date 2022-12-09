@@ -1,1638 +1,1582 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="rules.CNLC.RuleEngine.dmn"
-                 xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2"
-                 xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/"
-                 xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
-                 id="_BB7B50C9-D020-45E3-A76A-4F73B49F257C" name="cure"
-                 typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="rules.CNLC.RuleEngine.dmn">
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="rules.CNLC.RuleEngine.dmn" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_BB7B50C9-D020-45E3-A76A-4F73B49F257C" name="cure" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="rules.CNLC.RuleEngine.dmn">
+  <dmn:extensionElements/>
+  <dmn:itemDefinition id="_CC7016AA-E91B-4EA1-BCE0-D0626E088BCB" name="推荐结论" isCollection="false">
+    <dmn:itemComponent id="_37F665C6-C72A-48E8-9155-829282AD7C55" name="治疗方式" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_9C84DAF1-B110-449E-BFAE-9F4DB9B53251" name="证据等级" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_63147003-EBFD-407F-B237-15FDD821794C" name="推荐" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:inputData id="_EA7C64EA-87AA-45AA-9D0B-B3FDDE4C447B" name="是否适宜手术治疗">
     <dmn:extensionElements/>
-    <dmn:itemDefinition id="_CC7016AA-E91B-4EA1-BCE0-D0626E088BCB" name="推荐结论" isCollection="false">
-        <dmn:itemComponent id="_37F665C6-C72A-48E8-9155-829282AD7C55" name="治疗方式" isCollection="false">
-            <dmn:typeRef>string</dmn:typeRef>
-        </dmn:itemComponent>
-        <dmn:itemComponent id="_9C84DAF1-B110-449E-BFAE-9F4DB9B53251" name="证据等级" isCollection="false">
-            <dmn:typeRef>number</dmn:typeRef>
-        </dmn:itemComponent>
-        <dmn:itemComponent id="_63147003-EBFD-407F-B237-15FDD821794C" name="推荐" isCollection="false">
-            <dmn:typeRef>string</dmn:typeRef>
-        </dmn:itemComponent>
-    </dmn:itemDefinition>
-    <dmn:inputData id="_EA7C64EA-87AA-45AA-9D0B-B3FDDE4C447B" name="手术治疗">
-        <dmn:extensionElements/>
-        <dmn:variable id="_0CB2376F-D44F-4E0D-B745-73CD78A389AB" name="手术治疗" typeRef="boolean"/>
-    </dmn:inputData>
-    <dmn:inputData id="_5C3A298E-5592-49EE-B06D-E79D0F725538" name="消融治疗">
-        <dmn:extensionElements/>
-        <dmn:variable id="_54F10E02-FC05-43A6-A282-2D4AE9C9AA23" name="消融治疗" typeRef="boolean"/>
-    </dmn:inputData>
-    <dmn:inputData id="_4F45D3F8-439F-4946-88ED-C43CC2BCA66A" name="肿瘤部位">
-        <dmn:extensionElements/>
-        <dmn:variable id="_77A90B2C-6E83-4FF3-BB75-3A3AB97B5AB3" name="肿瘤部位" typeRef="string"/>
-    </dmn:inputData>
-    <dmn:inputData id="_FCC1E723-F6F9-4AB5-997D-8375BAA73716" name="肿瘤大小">
-        <dmn:extensionElements/>
-        <dmn:variable id="_24E1B80B-D99B-4EE7-87AD-230DE4773C6B" name="肿瘤大小" typeRef="number"/>
-    </dmn:inputData>
-    <dmn:inputData id="_6552AC37-110B-4C89-B4A7-2C2301BD1E3A" name="有无慢性肝病">
-        <dmn:extensionElements/>
-        <dmn:variable id="_0A17EB0E-8F77-4334-8CF3-DFD14B4B73D0" name="有无慢性肝病" typeRef="boolean"/>
-    </dmn:inputData>
-    <dmn:inputData id="_66947A87-A35E-41F4-92A4-6584181B0678" name="有无肝脏纤维化">
-        <dmn:extensionElements/>
-        <dmn:variable id="_44306C8E-48A2-418A-B966-D0E23E8C94BD" name="有无肝脏纤维化" typeRef="boolean"/>
-    </dmn:inputData>
-    <dmn:inputData id="_2B274689-6297-4E38-9002-EAB3908D8705" name="ICG-R15">
-        <dmn:extensionElements/>
-        <dmn:variable id="_4F9367B9-8D43-48BD-928E-3249E836E2B0" name="ICG-R15" typeRef="number"/>
-    </dmn:inputData>
-    <dmn:inputData id="_DA22A268-B21F-4A8E-9323-3AD49C1AFCD3" name="有无肝实质损伤">
-        <dmn:extensionElements/>
-        <dmn:variable id="_6D3CACBB-D00F-474E-9783-612D7D980A12" name="有无肝实质损伤" typeRef="boolean"/>
-    </dmn:inputData>
-    <dmn:inputData id="_48E82F1F-54C0-4CFF-91CC-B0AC5E42D638" name="剩余肝脏体积占标准肝脏体积百分比">
-        <dmn:extensionElements/>
-        <dmn:variable id="_0AB14F2B-CB42-45BD-9E4C-31ED20560AB8" name="剩余肝脏体积占标准肝脏体积百分比" typeRef="number"/>
-    </dmn:inputData>
-    <dmn:inputData id="_DB1EA886-5AB5-4E45-9BE5-540B8CCC307F" name="有无肝硬化">
-        <dmn:extensionElements/>
-        <dmn:variable id="_5CC4FC3D-5937-46E1-A7A3-703A55D7850D" name="有无肝硬化" typeRef="boolean"/>
-    </dmn:inputData>
-    <dmn:inputData id="_38B0568C-433F-45EA-AAA9-EB88802AB93F" name="肝功能">
-        <dmn:extensionElements/>
-        <dmn:variable id="_0ECCCCCB-F2E1-42BC-A386-B6D0220C4A9F" name="肝功能" typeRef="string"/>
-    </dmn:inputData>
-    <dmn:inputData id="_9252FDE3-3E86-4C0F-8766-86D9794D4317" name="是否接受有创治疗">
-        <dmn:extensionElements/>
-        <dmn:variable id="_A0C89849-9020-4BE7-949E-247952DA8558" name="是否接受有创治疗" typeRef="boolean"/>
-    </dmn:inputData>
-    <dmn:decision id="_D134252D-AB8F-4E01-B19A-308D58522C21" name="推荐结论">
-        <dmn:extensionElements/>
-        <dmn:variable id="_0C7B405A-0AEE-4BD7-AEBE-6487138EBCD6" name="推荐结论" typeRef="string"/>
-        <dmn:informationRequirement id="_B96C372E-F2A1-4CBF-90E3-42583A14CDFF">
-            <dmn:requiredInput href="#_DA22A268-B21F-4A8E-9323-3AD49C1AFCD3"/>
-        </dmn:informationRequirement>
-        <dmn:informationRequirement id="_A112C008-BF52-4CA6-AB74-004255F1EBF0">
-            <dmn:requiredInput href="#_9252FDE3-3E86-4C0F-8766-86D9794D4317"/>
-        </dmn:informationRequirement>
-        <dmn:informationRequirement id="_162D93F7-C9A3-4F2F-BD7E-83BB05D4EAC2">
-            <dmn:requiredInput href="#_6552AC37-110B-4C89-B4A7-2C2301BD1E3A"/>
-        </dmn:informationRequirement>
-        <dmn:informationRequirement id="_DC0DC9FF-AC2F-4BB8-91A0-2EF98F9DCED2">
-            <dmn:requiredInput href="#_DB1EA886-5AB5-4E45-9BE5-540B8CCC307F"/>
-        </dmn:informationRequirement>
-        <dmn:informationRequirement id="_5FA28135-D89E-4002-9181-7759F4268F9D">
-            <dmn:requiredInput href="#_FCC1E723-F6F9-4AB5-997D-8375BAA73716"/>
-        </dmn:informationRequirement>
-        <dmn:informationRequirement id="_8579536C-248C-49E7-ACEE-766A31047B40">
-            <dmn:requiredInput href="#_4F45D3F8-439F-4946-88ED-C43CC2BCA66A"/>
-        </dmn:informationRequirement>
-        <dmn:informationRequirement id="_F38060A0-D027-47A2-88BF-C0A238ED7070">
-            <dmn:requiredInput href="#_66947A87-A35E-41F4-92A4-6584181B0678"/>
-        </dmn:informationRequirement>
-        <dmn:informationRequirement id="_8216C77A-F259-444E-96C5-2CA29A878F81">
-            <dmn:requiredInput href="#_2B274689-6297-4E38-9002-EAB3908D8705"/>
-        </dmn:informationRequirement>
-        <dmn:informationRequirement id="_A49A36BD-C9FA-4341-B507-F84101D5C833">
-            <dmn:requiredInput href="#_48E82F1F-54C0-4CFF-91CC-B0AC5E42D638"/>
-        </dmn:informationRequirement>
-        <dmn:informationRequirement id="_77E6D4C5-570D-43E9-905E-4F076BF5E8EC">
-            <dmn:requiredInput href="#_5C3A298E-5592-49EE-B06D-E79D0F725538"/>
-        </dmn:informationRequirement>
-        <dmn:informationRequirement id="_678F4C9C-53D0-4B4D-9B1F-2972AAB95753">
-            <dmn:requiredInput href="#_EA7C64EA-87AA-45AA-9D0B-B3FDDE4C447B"/>
-        </dmn:informationRequirement>
-        <dmn:informationRequirement id="_5502DE8A-5910-4781-A633-3137BD6EA270">
-            <dmn:requiredInput href="#_38B0568C-433F-45EA-AAA9-EB88802AB93F"/>
-        </dmn:informationRequirement>
-        <dmn:decisionTable id="_9C1593B7-3E66-4973-9527-52FC79B7BD42" hitPolicy="COLLECT"
-                           preferredOrientation="Rule-as-Row">
-            <dmn:input id="_0C2BC784-4832-43B6-BB9C-13089E2773E2">
-                <dmn:inputExpression id="_E0FD9B12-562B-4D37-919B-41CE5AC016CC" typeRef="string">
-                    <dmn:text>肝功能</dmn:text>
-                </dmn:inputExpression>
-            </dmn:input>
-            <dmn:input id="_942312A7-5DD6-4387-867F-378BD10D1022">
-                <dmn:inputExpression id="_D4AD791B-28C5-410B-AE55-B34E7195F11F" typeRef="number">
-                    <dmn:text>ICG-R15</dmn:text>
-                </dmn:inputExpression>
-            </dmn:input>
-            <dmn:input id="_D33F9B93-E32B-4AC6-BF08-2A58EF1D1F0B">
-                <dmn:inputExpression id="_AC5B2E7F-24AC-43CA-9480-5EA0CAA62CE0" typeRef="number">
-                    <dmn:text>肿瘤大小</dmn:text>
-                </dmn:inputExpression>
-            </dmn:input>
-            <dmn:input id="_113A0592-3D7A-4473-9D13-79967C511007">
-                <dmn:inputExpression id="_85C84BB6-02D9-4FB3-B465-B3995FA271CF" typeRef="string">
-                    <dmn:text>肿瘤部位</dmn:text>
-                </dmn:inputExpression>
-            </dmn:input>
-            <dmn:input id="_955F4929-E686-4DA5-962C-239F472CFA14">
-                <dmn:inputExpression id="_8A03C6FD-523A-44FF-8167-1DCDC917FB88" typeRef="boolean">
-                    <dmn:text>有无肝脏纤维化</dmn:text>
-                </dmn:inputExpression>
-            </dmn:input>
-            <dmn:input id="_F51D468F-612F-4EB7-B392-6B3795AFDF8B">
-                <dmn:inputExpression id="_71CD7927-DFBC-4ED1-9AA3-574A07FFB58E" typeRef="boolean">
-                    <dmn:text>有无慢性肝病</dmn:text>
-                </dmn:inputExpression>
-            </dmn:input>
-            <dmn:input id="_1687184B-F4E4-4625-B1A8-D2DE0765937A">
-                <dmn:inputExpression id="_E3167933-3C16-497C-A362-D8741184AA7C" typeRef="boolean">
-                    <dmn:text>有无肝实质损伤</dmn:text>
-                </dmn:inputExpression>
-            </dmn:input>
-            <dmn:input id="_48969418-9638-4024-AB9F-250D39020F73">
-                <dmn:inputExpression id="_644A2FC0-F807-4EC0-8F32-511BB16B1216" typeRef="boolean">
-                    <dmn:text>有无肝硬化</dmn:text>
-                </dmn:inputExpression>
-            </dmn:input>
-            <dmn:input id="_618CD7F7-8149-4864-BDF8-7D2EA5A4B038">
-                <dmn:inputExpression id="_B55292A7-596C-4B54-80AD-C2D663EE58C9" typeRef="number">
-                    <dmn:text>剩余肝脏体积占标准肝脏体积百分比</dmn:text>
-                </dmn:inputExpression>
-            </dmn:input>
-            <dmn:input id="_A3FEE6DE-57D2-4DB6-8298-9313FA941784">
-                <dmn:inputExpression id="_3FE6F3BD-A7C3-403D-A57C-E26AD108CFC2" typeRef="boolean">
-                    <dmn:text>是否接受有创治疗</dmn:text>
-                </dmn:inputExpression>
-            </dmn:input>
-            <dmn:input id="_9A5DE81E-2D31-4B34-98C5-E685F9342B6B">
-                <dmn:inputExpression id="_D36DACBA-00B2-4305-9EEB-3541C7A4A376" typeRef="boolean">
-                    <dmn:text>手术治疗</dmn:text>
-                </dmn:inputExpression>
-            </dmn:input>
-            <dmn:input id="_E4978CDE-892C-45B4-8C09-23475FE12D62">
-                <dmn:inputExpression id="_45EE49A3-0725-446F-97CD-B8D5630D3DD1" typeRef="boolean">
-                    <dmn:text>消融治疗</dmn:text>
-                </dmn:inputExpression>
-            </dmn:input>
-            <dmn:output id="_B5D4FB9D-18F9-4190-8EB1-322CC1B9DB29" name="推荐治疗方式" typeRef="string"/>
-            <dmn:output id="_8511BD3C-2E70-4637-AA72-3821A1E0F509" name="证据等级" typeRef="number"/>
-            <dmn:output id="_8FED7482-8A52-4CF2-8EB2-1DDF62DA0CB2" name="推荐" typeRef="string"/>
-            <dmn:output id="_9C9A0A28-6D90-40A4-92DA-6160B1A20F7C" name="ID" typeRef="number"/>
-            <dmn:annotation name="annotation-1"/>
-            <dmn:rule id="_B155AEAB-6993-4E26-B5CC-474153ADA129">
-                <dmn:inputEntry id="_6439F353-CA7F-4B14-B398-C6BDBFB8D6F7">
-                    <dmn:text>"A"</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_388F30EF-0C19-493E-B57F-915731480639">
-                    <dmn:text>&lt;30</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_0E26F3D3-319B-4739-93AC-76A1080E5BE4">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_E51C4233-92AA-4CD9-938B-2F67C2FEE9A6">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_1A4D27D1-3C3F-4443-84BC-7BD3045F7995">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_DBA0DB39-B8A9-4E0B-B634-47946CD2E06B">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_525A369F-437E-4024-9B80-BB7AA307E41B">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_8CED9AE0-BB22-47F8-A0C3-A4B7F295E4A9">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_B51BD831-1CCA-4296-BF15-A8340A108063">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_C8A970AE-4932-48A4-A8AF-C265476D44FB">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_FCC395FB-3C9E-4EC4-A8A9-7565EA92B582">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_21B0BA0D-739C-47F7-AFD3-16D607E0FB5E">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_0C8DDC0A-0395-46A8-A980-E5C04808AC63">
-                    <dmn:text>"手术切除"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_B6CB4456-33F2-4522-8353-DC096CE0534A">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_7DFE507F-2A25-4C0A-A0C1-7E2FFE44E9BB">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_9A3945C7-67CD-409C-93E2-0637CA4F06BF">
-                    <dmn:text>1</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_DEDA41B5-ACA0-4E55-8982-D7143AB1240F">
-                <dmn:inputEntry id="_12AE1BFA-4789-4BC9-B4D7-0C40E8AF3DC5">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_516E5132-2C0E-4D97-AE58-FCE02F436556">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_E7654E86-385E-4732-8E6A-326EF57D7400">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_EE2D308A-B859-4D1A-BB57-D294432AA339">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_AFE8A44A-5BCD-4396-9869-5AB15A2E25BD">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_C73DED50-747E-4ACA-B0C9-F8ECA0E746DB">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_7749BD10-1667-4F6D-9077-9BB007865550">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_B5614582-6536-47C7-83EB-8AEDD4543E53">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_649CD1E4-20EB-46A1-8791-FF50EDD27472">
-                    <dmn:text>&gt;40</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_C0F8E6D8-4C5C-4B0A-B22B-7C690491E2DC">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_740AB860-FB01-432D-914C-E5B2319BBDF4">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_70A51911-4E4D-4AB4-B640-487172882807">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_692FD276-419C-46DD-96B3-AA878435286C">
-                    <dmn:text>"手术切除"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_5956E701-0310-42E4-B565-2186724B4D7F">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_DAD7DF91-479B-44ED-90A8-D822D197229D">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_D8C09F18-A8EC-4FAD-A8E2-939211768154">
-                    <dmn:text>2</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_9F9C3B0A-5145-4B31-9F44-46F81C539F9E">
-                <dmn:inputEntry id="_6C57BDC9-6FFF-4710-A01B-F884D43D001F">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_E88D76F3-32E6-4651-ACEF-2A10D966E6B9">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_CBB2B2B8-E6A7-48E2-95DA-7A6B8B19B790">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_F8E21FAC-D98E-408F-87C5-2F2F74D2EF4D">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_27176F69-E2A5-456A-88A2-F0E549E8C5AA">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_AFDB0A1E-DE81-4C9B-AC02-FA8E580E3D3E">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_F1694FD6-B308-4CFB-9256-54CFF7665F30">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_8E5BE6EF-5A34-4443-BD45-9880D11B7A5C">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_6B72566A-500A-44E9-B1D0-CFE50EF2C0DC">
-                    <dmn:text>&gt;40</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_6CC85A44-8EFC-4630-9BB8-7C1A928AF5FD">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_1EE1EBEA-BB9D-47C3-A56B-AB2B2418500A">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_A7F6148A-7D24-466E-B4D9-EF902663232D">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_06ACF268-F0D5-44AC-9972-A8079BCB444F">
-                    <dmn:text>"手术切除"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_E9887852-6C52-4102-81BB-74BA45E544B5">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_624D021B-6B04-4D21-988A-343722D18CB2">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_3AB9462E-BC8D-4229-94D7-3460595D1B94">
-                    <dmn:text>3</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_640BDCC1-67DC-4A3B-ADD1-B929E5C816BD">
-                <dmn:inputEntry id="_96C2B738-3DFB-44D1-AD4E-08561352CF84">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_FFCC659A-FB3C-42ED-8332-CE3D079A9A02">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_3EE2B606-AB9E-451F-B2DE-1D79666E8F02">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_87D0C127-46EA-4431-B5E0-4B669DFA35FB">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_7526D449-2F60-4951-8FBD-FE40DC55617A">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_CD9902BA-B943-45AB-AA71-1409CAC545EE">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_2E54C13E-5178-451D-B886-07241399BB2D">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_AEB68B84-C6C4-46CE-8E07-6E984625A15F">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_637BD428-9EC5-43A8-8941-4CC1299A8B3A">
-                    <dmn:text>&gt;40</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_D8A3AA72-1191-4801-8766-14FFDFE48F0E">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_98B48231-F8A3-4478-9AEA-714A24BC940C">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_C9BEC3DA-F9C3-4DEF-AADF-D66A20886DC3">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_579C200D-180B-4C92-95EE-813D12C20DCC">
-                    <dmn:text>"手术切除"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_410D8843-FA79-453F-A762-B035967A0931">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_7D6A2A7B-2EA0-4C36-880A-A95B5722AA47">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_D7EF9991-9291-4056-86B4-2E7103063AB5">
-                    <dmn:text>4</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_E5BDF05B-15F6-4C0E-B97F-ADA024132526">
-                <dmn:inputEntry id="_0566FC54-3F9C-454D-80A9-97B04AE166CC">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_619A2A80-2FC4-43F6-AA9E-43F90E3E7E93">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_D93B1F51-EE9C-4389-8085-EEA7AE9D329C">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_95E903DD-DC25-49AA-B54B-69883E61B69E">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_333C093D-7AFD-4C94-ABC1-3DD464519A8B">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_54F6B4DF-6DD6-4D80-AB46-035130C81679">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_9E0A4B3C-1415-40AB-95AD-9DBBE8450554">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_A98676C1-CBF4-4BEC-99D9-A52FBCA016F8">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_ED8F95A5-7EA9-4029-AADF-7F37822CC115">
-                    <dmn:text>&gt;30</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_CA4C12FB-F896-4AC8-B4E9-D0F8D1314766">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_EDE69575-8B9E-4145-9451-D44EA19FB2AD">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_156A2752-CB91-4D67-A000-D63AB29CAAF1">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_7E81668E-7405-4B25-BE4E-14DE25CC26A7">
-                    <dmn:text>"手术切除"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_A23904AB-291E-4CEF-AC82-88DFD5F7F62D">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_00139052-112D-4513-98E7-2CD18DDCECE8">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_CED434E9-F10E-4652-AC6B-644874E7DC1D">
-                    <dmn:text>5</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_46D171CB-7B1B-4C2F-BDE5-1CFBB06C0762">
-                <dmn:inputEntry id="_81F22A6E-5AAD-4078-AD11-EB74EF84DA9D">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_E63CD843-E4D8-45A3-8262-2ED8898E4402">
-                    <dmn:text>&gt;39</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_B4FE1A1A-A43B-4F63-BDA7-CA6841D9E2C1">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_7BED95A0-AD68-4C21-A587-19724D3D0C00">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_B27695C4-BC48-4902-82C5-C15A781FCFF7">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_E4890D90-AD0E-4A04-9023-55F03506E3C3">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_2DBADABD-F662-4753-885E-07944E302B19">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_3A6BCB41-1833-431C-A10B-782B89AA141D">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_18E46BE8-7908-4242-B28B-A3E364FB7035">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_0D30FEE2-858E-4189-9BF0-2AD530F71FC9">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_79505324-0A71-41B5-AC7B-B45399309404">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_54EDB7A9-028D-4F1E-B3C9-D2F1835FCB2F">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_E8EE4041-A08D-45A3-AB74-97E10CF1AE3D">
-                    <dmn:text>"TACE"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_4BB04779-E0D9-45CC-BA44-9CCB0BCE8E01">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_795E9E46-D179-4EB1-9C87-C12389D4F683">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_BC0BD1A6-0C3C-4B1C-B433-FC2B3E9CE6FE">
-                    <dmn:text>6</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_3D7AA232-654B-49E4-A139-EAC4F233D846">
-                <dmn:inputEntry id="_7A6A30AB-A041-4E84-AF17-0525E2510944">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_A75956F2-B8D9-4CF7-BBD2-F2E15CCDC50B">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_EB3C9097-73AD-47C4-856D-E4E706841843">
-                    <dmn:text>[3..5]</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_DA2011E6-6C11-42C6-A070-F8C2E2DA7288">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_622F3E6D-B1D4-4CA7-9A28-A637A1D63CF3">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_4CD63771-B39C-4091-94D9-CCD599393A61">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_02939ECD-AAFD-470C-9A08-6F904F63574A">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_5B638C3C-1E71-4FB2-A18D-F6EF29FD8D26">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_7694976F-472B-4471-B416-5C3DBBA09312">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_7F028C43-4CBD-4E45-936E-DADCCE439931">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_0C7C56CD-20A0-40E3-A43A-F07C2085F94B">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_2435223F-7850-432D-A57C-B4501F895696">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_B4784DC2-A7BA-4118-AFE5-E16B7F2EDA33">
-                    <dmn:text>"手术切除"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_1800072E-B250-4001-B107-008C8E2BC0B6">
-                    <dmn:text>1</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_7DBC2F66-D8E6-4B61-AF98-FA075D3DF1BF">
-                    <dmn:text>"A"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_75F6C7CF-472D-4703-AFF0-12EFF12B8756">
-                    <dmn:text>7</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_BB297DF6-30D8-44B4-8D5F-DA888A17FB5F">
-                <dmn:inputEntry id="_95C7F3C1-4B4F-4F83-B0BF-4958C30DCE51">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_706B3E43-A0C6-4C27-8784-36C200F00924">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_ECC8F73B-E70E-42FB-B498-7DE9A3E5D8E3">
-                    <dmn:text>[3..5]</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_A53CDE37-C955-4FB7-9A61-739C44BC0AAF">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_299B6F23-48B2-4AB8-9A51-6FC5100341E9">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_1D434266-715A-4046-9CCD-68EE7DDBFB59">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_F4916735-0AC3-46FE-90C7-225E8146E636">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_83D6B30B-2E34-4576-BB20-AD8EC79B60DA">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_026AAA9D-2DD8-4FB9-B0E0-497924D669EC">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_8F46BCFB-13AD-4136-B567-EF4146662D8C">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_2F35D892-8455-4BD1-89C7-79AB3E13628E">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_F61E558C-15B1-47E3-8C3C-0899DD167528">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_E24215C9-586B-463C-92BB-B26E7CBDD569">
-                    <dmn:text>"消融联合TACE治疗"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_0A71BD2A-6CBF-41B3-B8DE-EAE67B6951BA">
-                    <dmn:text>1</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_A2A13A65-A5ED-423D-9085-2D7336DCEA48">
-                    <dmn:text>"B"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_72E69D6B-2065-4263-BD21-376BD00B013C">
-                    <dmn:text>8</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_F048F009-52DF-4CA0-A06A-1CAF1E9ECDED">
-                <dmn:inputEntry id="_6336C8E8-CBA4-44CB-BCCA-F32372C4A408">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_00ADEEB1-473C-48C5-A13F-08A9F50053DD">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_9DBB4B9F-5065-49A7-8A3C-DC5CB4FBDA13">
-                    <dmn:text>&lt;3</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_F3DE3634-2A3F-49D1-9BC6-02FF84496C47">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_E08AF440-6A4F-4385-8F8E-D4A8A731EF95">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_D9C4A6FC-C861-4712-842C-99F959F894C1">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_6B5F62B3-537A-4B00-80D3-882761C1A89A">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_42F784E6-D825-4387-BA17-ED90FD84AA59">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_E83559E2-89CF-410C-8938-984C5067643F">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_B77D891E-6E9A-47EA-A560-02E1B8143F7C">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_E290D1B8-9A9D-48F0-83D5-797E66652162">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_9629F6E9-E698-4ADF-B0D4-1FEFEDAEF0FD">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_D1AFDC10-49AC-4B4A-A674-CC02F53DBD09">
-                    <dmn:text>"消融治疗"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_70C8DC7B-20D4-4822-BCC6-146DD1FB29B1">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_0F3CF025-BFD5-406F-B608-9EF1CF1CFD82">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_4000A693-2EA3-496C-908E-D33CD2000673">
-                    <dmn:text>9</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_DC43AB63-BCA9-4F9E-856A-E70B5F0C7A85">
-                <dmn:inputEntry id="_FED25882-1DD5-4A42-9BE6-7C562AE6D473">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_956BA74F-B085-4C08-9307-BBDA72AC84F9">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_D7A4ADC9-9196-4E7A-9361-9B46981186ED">
-                    <dmn:text>&lt;=2</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_599A081F-BCA6-4EEA-AB6A-29721CBD26C8">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_F8D0318F-458B-4445-93F1-9E5776A4EBF5">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_400D76F1-BBEF-4B53-9769-F87F274B7BFB">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_C39E290C-07A4-4929-904D-3FB9CA540815">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_AE7DACA1-9895-4980-A95F-9C298C6995A7">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_C6B182D1-95D0-4F03-9A3B-F3CD58BF9737">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_1C3A6BFD-BF3C-46E9-A0E8-96979C1C0BCE">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_21BF02CB-2A87-4687-8CFB-64E110E4ECE7">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_A90849A0-A2E2-4BF8-BB7D-3D9B1C87E9E4">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_2B2FACCB-93FF-4F1E-972B-3F5780A62090">
-                    <dmn:text>"手术切除"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_804296A0-B7A3-4E0A-AD91-03092145DFAD">
-                    <dmn:text>3</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_2510B0D9-419F-4D71-B850-D3E92D37EC23">
-                    <dmn:text>"A"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_75BDD909-437C-4AC5-841A-6AED7A766BC8">
-                    <dmn:text>10</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_6A0D7412-634F-4DDC-83B8-009E273DCEC7">
-                <dmn:inputEntry id="_8A216820-3024-4AD8-886B-79698BEAC0BA">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_456ABBFB-3476-46E7-AEFB-6AD998930412">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_760B7D47-DC5A-401E-B2FA-BB3C39FF1F04">
-                    <dmn:text>&lt;=2</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_C70C1BB2-D9D0-4E04-9DD5-B80EDE2DBC47">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_B21273C3-77BC-4BC8-A489-D588D34C9280">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_BFDA228B-B473-439F-B2E4-CC18E3B25F83">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_30DD001F-FDE1-4F82-9035-445F2759F49D">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_BC2CD2B2-4914-4109-988D-81D8633FF0C0">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_DF516DF6-EB57-4BE8-B917-4622E3949202">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_DB2828CC-F702-4FB2-966B-77FF3C4323A6">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_697ED45F-7125-4ACE-867A-0AC8FDB57F3A">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_1C5DDA3F-AE2C-41D0-9661-09DF89DFD5DB">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_0AAB39E5-4FAF-45FB-B9D4-BB7BB8D9D34D">
-                    <dmn:text>"手术切除"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_359237CB-7A46-417E-A692-923C86BDAA73">
-                    <dmn:text>3</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_49150228-9437-46FA-A0BA-4698FD8B6626">
-                    <dmn:text>"A"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_C1F7A770-3531-4D8C-946E-813EA6704FCC">
-                    <dmn:text>11</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_41E315B4-2BFD-4F45-B77A-6B9C363681E0">
-                <dmn:inputEntry id="_51F42B95-BDE3-4304-AE18-17B2EE62E712">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_02BCD641-B361-46AB-B377-ACA9DC21C5D7">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_BAAE45FE-F5BA-4266-8651-B9DAA55CF6C9">
-                    <dmn:text>&lt;=2</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_4B99E0A1-505F-4461-9B3C-1661579226E9">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_92279974-6419-4C1C-AA2E-B73544BA3AF9">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_60CBDBAC-23D0-4A2C-8D92-974E49529365">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_100F2E84-D208-4391-8F60-211659CF9B39">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_0ABD1F57-E041-49E8-85F5-841A0569004F">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_FE50D87C-0775-4BA7-88C6-DA9DE667078C">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_53ED3051-ED92-43AE-ABA5-B67B33F47638">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_7638C04D-EC6E-4DB9-96E1-44A153B9F57F">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_BA4A073E-8F16-40C1-9519-48451D3D362E">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_57B2261F-0170-4A40-9A6B-8E148F5E1EB8">
-                    <dmn:text>"消融治疗"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_677DAB0E-AE18-4F86-B5B1-EC0F38FCC004">
-                    <dmn:text>3</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_AFE3F2C7-71E7-413C-9133-F6335B86DD24">
-                    <dmn:text>"A"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_A0A71221-867A-4F09-8D0E-E13BCCFDE115">
-                    <dmn:text>12</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_878B4A5D-107D-4242-99E1-C36101A8354C">
-                <dmn:inputEntry id="_7EE8775B-E698-4A19-87ED-E37CBA0A8553">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_C9A8281D-6412-44F6-A927-914D881850C4">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_C781A674-B2E8-48C7-87CA-C35728E38BB0">
-                    <dmn:text>&lt;=2</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_B935520B-15F1-4971-A8D7-EA768A63136C">
-                    <dmn:text>"中央型"</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_88645E7C-14F3-4DA7-A0F0-57E39F8812DF">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_D694CFC7-35A9-4B4E-9AA6-A5F6FADC868F">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_E7F538E0-081B-4EBB-9893-7B6E14010E35">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_CF8AADD3-3DDB-482D-A979-26605FFD4336">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_B935D877-44EF-4829-90C1-0366D6CFEA1A">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_B4DECDCB-69F5-443C-BF17-2691A368530A">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_19069D87-85C5-40B0-BE98-C681EA1B8348">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_B8EDA740-DFF7-4D0D-B8FB-3762C7863C31">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_3C620EDC-412C-4265-B2B3-325FC00F5DB8">
-                    <dmn:text>"消融治疗"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_41E2914F-5566-49E7-B83F-975D2EEB78EB">
-                    <dmn:text>3</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_F0B752BB-9FDD-453C-9315-0AE0943CC3CC">
-                    <dmn:text>"A"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_E1C04F93-C0D1-479A-A5DC-FD23D8D1BA48">
-                    <dmn:text>13</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_1F86D0B4-3DDB-4202-82A5-A58256C69BFD">
-                <dmn:inputEntry id="_CB687144-0DBA-4B78-A774-3491AF73F8D5">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_CE3B5A5C-B0BB-4545-9D17-E328AF2CFB89">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_4C7CBB3C-9FF3-4A01-9C4F-C5DFA0015493">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_E21CB4DB-A2C9-4CC3-B22B-14CDE82FD386">
-                    <dmn:text>"肝脏深部"</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_E43EE876-8624-4B50-9F9A-CE571F6D7F8E">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_38AAFC80-67EB-4A77-9B2B-01C709936E5A">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_556E8136-38B0-40E5-AC21-1DA070C5BF70">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_D3738982-E493-4CD3-BE37-A95EAFD97DAE">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_648B7ED3-7AA3-4737-AA6E-38E0E83ACE9B">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_243F0289-91E2-4ABE-ACDC-10185678F20A">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_5E12559B-B5EA-45F1-B6CB-D0D41A22A774">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_CAA7CA17-76B9-4786-A8F2-A76A980BEF26">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_525F34FD-50F9-4258-A4EA-7A790E08AF32">
-                    <dmn:text>"消融治疗"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_6CDEAEFC-8BE3-4615-AFF2-9AF7FE8E79A7">
-                    <dmn:text>3</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_22E391F2-E81F-4219-B4AB-93FE7F3B9F62">
-                    <dmn:text>"A"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_6D7FB862-46F9-42E3-8B93-79BFBA1EC0E2">
-                    <dmn:text>14</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_850A82F6-BCF1-42DA-83BB-21820B4DDEB1">
-                <dmn:inputEntry id="_A7FB44FE-37BE-4607-B2FB-6A6C840D2966">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_F17F5EAD-D7FC-4343-BD98-7614F09D0019">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_C9ACB4C3-1319-44D4-A86B-B933CF8817BD">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_19A21231-D5BA-4992-81D8-7C30B7D73A5C">
-                    <dmn:text>"中央型"</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_58E4D712-5D6C-4D48-86CF-108405E6A976">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_C04A2117-F661-4A75-8334-02A6124F3077">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_67849642-FBBF-4B4C-A9B2-58302683D286">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_FEA95EC6-D9ED-46F8-9FAC-9232A74F03C2">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_30D0B981-EC05-4E33-B048-C0D071B7EDC0">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_CDC22FB6-0E2D-4447-902A-E0606D79EF48">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_809EB94F-1056-4DB6-9317-6E6ECADFFDF4">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_782C7AB5-028A-4C6E-9420-63AC356B1585">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_62C60D68-4CCA-4E20-A09D-D002F4E90800">
-                    <dmn:text>"手术切除联合消融治疗"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_D45322DC-B448-41C4-BB2D-6458E0E75662">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_E39FC6DE-2639-40D9-8362-0713639738AC">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_DB254F8E-627C-4C60-AAE0-FEE7004719DC">
-                    <dmn:text>15</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_F5AD9270-DE62-496A-A90D-B2E289B5EBA6">
-                <dmn:inputEntry id="_660A38F5-5F8A-48CE-9137-6DC0FB60C4B3">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_22811208-E379-4405-97B3-498A2CA0D009">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_CB4777C2-7967-4A3F-A339-F20B0FDBC902">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_702C89CF-0314-4619-9E03-EFFE7EA4457A">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_76D40E21-E1A8-4A91-81F9-FC1B92B5EC8D">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_5D647ED2-1A97-4034-A4FC-7E537647BE96">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_90AC48F1-D4EA-4677-B07C-05CD91D12507">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_E4342300-E69F-4881-AC86-2B9BBEDC5D2E">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_5DCB9C50-2221-4CA7-B6BB-80C365C6FC45">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_9A8957C0-54E1-4CDA-BD3C-DC8CF4B53372">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_1C6ED5B5-A93B-404D-A598-509C289881BA">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_4F2A697A-17AE-4696-9628-DE8142CE2EE0">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_12C04788-8294-4CD8-922E-81EE87430221">
-                    <dmn:text>"手术切除联合消融治疗"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_484189D9-55FE-4B64-9350-3141AB5C0263">
-                    <dmn:text>3</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_7838DC79-947C-433A-A04B-F8AF724DCA22">
-                    <dmn:text>"A"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_3F8E207D-52ED-4E53-B7C1-A43636DB1BAA">
-                    <dmn:text>16</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_230B5C4C-0DD0-435D-A252-46AF1622D0CC">
-                <dmn:inputEntry id="_536ECA68-3BBA-4CFD-A3A0-3598C8D3DC36">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_72D821E4-99E1-49CD-AC06-46B0EA465BA7">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_BB2176CE-97F5-4B54-AD78-536F8FEF61BF">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_EA378A21-B7A3-4E16-8DEA-1F7F5875F43E">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_BD4C999A-F66D-46A8-8682-4ADBD4202804">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_2144327A-4322-4BF9-9EC2-B26A1E479F5B">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_D5D738EB-BA79-4696-9843-C6B27A2C4973">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_DDDDC8DC-1499-45F6-83D9-CFD29C404109">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_5D2BCEE6-ACB1-42C1-AE60-E015200C14D2">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_045FC534-2A6F-4A49-8FC3-0672107DA648">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_657229DD-A3AD-47B2-9D06-37E280A6F53A">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_20B8FD94-DC15-4349-9C81-FC0482F343F0">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_A0487D06-DD14-43D6-8DF8-FEA627289D71">
-                    <dmn:text>"手术切除"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_68436E00-4578-44AF-B661-55AD423F3BA0">
-                    <dmn:text>1</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_70E58695-69A3-445D-A753-E26F82D81BFB">
-                    <dmn:text>"A"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_55C112D4-DB93-4DC9-93DF-BF4A6F8A09A8">
-                    <dmn:text>17</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_2CA81322-4784-46CA-94BA-FD9DF794F258">
-                <dmn:inputEntry id="_789B2552-62FA-4350-AE67-2F98F0E3FB20">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_67862A5D-0EEB-4380-8DB8-E4A945432C37">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_10838A7B-C336-435A-92C4-ADB7753D2275">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_98FBEC7B-0FBD-4030-B263-1149FE8E988D">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_726D0847-691B-4726-9539-9E32F24A9FA0">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_FDDDAC5F-C0F9-432D-B3CD-FAB2FB8639DB">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_B3CB8F75-E5B1-4CD2-90D1-15D6913595BB">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_621819D8-181A-4CAB-86E3-F505D4189BBF">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_5EA56F26-0B40-4D95-A8D1-BC3ADF1C7559">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_081BC918-0265-4852-A651-00FD3FA28852">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_3A31F496-2284-423D-BEA4-3608372F94BE">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_8F702702-99B4-4CF4-B1A8-D97E40BDB3BD">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_C6A3DA49-F64F-4B9E-8987-FC56C72A2BDA">
-                    <dmn:text>"消融治疗"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_75AF1F75-17C6-43DF-A848-4FF9912C9830">
-                    <dmn:text>1</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_947CED9C-8298-4CAD-94D5-C510A93DE349">
-                    <dmn:text>"A"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_7A5E9234-887D-4DCB-A77F-A6B6EBB41AAB">
-                    <dmn:text>18</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_1128A73D-02B6-4E0A-AAC6-4EB724E25AE6">
-                <dmn:inputEntry id="_239F6458-7D7E-45FA-9DD3-0A17B90E072E">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_9B0E5F8B-09D4-4EB1-BE83-A76D6E332259">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_559638B6-9417-47E0-9EE0-F8D5116E1B51">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_97090E6F-7325-47E7-B524-D137A509BCBE">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_F0F79297-4D7C-4319-9249-84030B628A67">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_E3BC60D8-9E5A-435E-A455-475DF472E78F">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_3607E346-795A-4A1C-B7FF-4830444B8963">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_0121E0F2-3A13-4F6B-B11A-6B8AC4B5080C">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_79B4D858-46DB-45BC-8852-EB04ACA0E27C">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_5B53AB80-02A5-4B4D-A62D-F860A215825A">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_14475D4E-085D-4CA7-8274-F614A11F44BC">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_2F0E360D-8B50-4604-AD04-17ABBE99C2D9">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_DDB368C4-21A3-4BBD-9154-2275CD7DAB83">
-                    <dmn:text>"手术切除"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_DD2DC717-B328-4CDE-B98A-AB1677F1DDC0">
-                    <dmn:text>1</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_9ECD3D0B-5196-47AC-8E2D-1D53C122D424">
-                    <dmn:text>"A"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_D79F17FA-0EAA-432C-B628-AA2E0B809A99">
-                    <dmn:text>19</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_7C8E117E-44C6-464E-A38C-7069C6498A25">
-                <dmn:inputEntry id="_10212203-7AEB-4B10-AC8C-F463F48A969C">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_78C76AF1-3604-4B37-AE19-5550F89D0C65">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_CC3C160B-07E2-4ACA-A4CB-B107ADA1190B">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_4E18688F-507E-41E0-9E03-3861FA1E24A4">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_9050BB53-0ABC-4D5B-A1BB-E962B3498704">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_8478417F-A0D4-47EC-8B62-7CE9F73158CF">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_735309E5-6DF5-4DA0-9806-9F7EC4519D97">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_9A203539-D780-4CA6-B392-196D7F4E9821">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_2BD9543E-1A33-47E2-A999-89E5E4D58365">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_F3F9FB8D-4CC7-4A6B-9974-B28DC61AEF99">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_9D64F59E-5C52-48AD-9B5A-C84D1C59764A">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_9BF128DD-0F86-4C66-81BB-670FDB367710">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_3EAB999A-1F6B-4E27-96F0-449CBCB245DD">
-                    <dmn:text>"消融治疗"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_3D9D584D-8E4B-4831-9126-67055B412A7F">
-                    <dmn:text>1</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_873CE63F-018E-4A2F-8D26-604BB871C50C">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_B2FFCF85-B732-4F2B-B973-66EBB9D130BF">
-                    <dmn:text>20</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_B77C925C-B6DB-480E-B73A-A033DFF463D7">
-                <dmn:inputEntry id="_74406273-579C-4E65-8E5A-A341673B75AB">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_50562106-D901-409B-A97D-C6F54685CD8B">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_3EB4EA00-B94B-41C6-9B63-D337230396A0">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_B7BF5D4A-E4F2-40B2-989A-921E70BC13F9">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_295BB94E-CF96-4E1D-8E6C-405833E3F61F">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_BACD6157-E845-45A5-9146-49BB7777BF90">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_7AF49625-2DFF-4C9C-AB94-7043CB733572">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_22711F3E-3D1C-4897-B6AB-19D67291929B">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_60F16F1D-8A81-48F6-8F35-3FC9C1784BFD">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_C4046F29-A15D-411E-92B3-29892F4432D6">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_EC256A49-C09F-4AA0-976C-37B9DA502CE8">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_2B5F83D8-5249-4C3F-8CB4-2299CFE792DF">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_C32C3E03-757A-44D2-B9C5-2DF854AA44D4">
-                    <dmn:text>"TACE"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_BAC13BC6-CBF3-4CA6-A039-6F73B0339A22">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_27301CFA-9DDF-4067-A0B4-CEB1002D5C01">
-                    <dmn:text/>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_405366DC-C131-4EB6-93B1-476C48529DBA">
-                    <dmn:text>21</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_2C794A9D-0CA6-4FC7-B435-12B3E56B4763">
-                <dmn:inputEntry id="_FB14BA6A-B88D-437C-93E4-476AF6885019">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_C6E01433-CE1A-4F9A-83AF-D13338BEE1E5">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_23923DA5-5065-48B1-9EEB-C50033059BE0">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_49E39886-8558-406B-9E95-FED8C999CD9B">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_4058C624-5AD1-4AAE-B760-72BE36602E35">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_A857B261-E23D-46FF-A79C-FC70F0BEA7CE">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_FD9090AF-9DA2-4DD4-9A40-CB611DBF18E4">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_41DB5132-5596-4E0D-9D2A-73DB5C3973FF">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_BBBB7CC5-D917-4E48-A1E5-8013CC230EF2">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_41F5910B-D415-4F30-9B33-5073374AE80B">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_A7540A6D-97BB-425F-9AF4-5045EDA0D171">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_BF711BC8-618D-4B85-B054-BD6AB6D5A846">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_B1E2516B-51C4-4AE8-82F3-E92929457693">
-                    <dmn:text>"外放射治疗"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_FDF8CC70-6747-4CCC-B6BF-346F743CA07C">
-                    <dmn:text>2</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_88A4FFBC-C2B4-42DC-BFC2-37E1F86BC41A">
-                    <dmn:text>"B"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_4469312D-E688-4715-A207-8F4677609BE4">
-                    <dmn:text>22</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-            <dmn:rule id="_42C74FED-5325-45EC-ACD7-1F1D791DD149">
-                <dmn:inputEntry id="_8871F5C0-D6FF-420D-835A-E4ACA4A81A16">
-                    <dmn:text>"B"</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_3A5FA582-EDCF-4A80-8E57-A02B81618C7D">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_FA94FE75-7F84-44A7-AF56-BCC547DBB4D6">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_372EA9EE-A565-42C4-8758-9EF095FC894C">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_1EACA246-87D4-4B61-9913-BA3DE57D8FE7">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_06AFEC7D-BF62-4DE7-909B-D7FA83D49104">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_E43AD967-FABD-4B4E-924B-F3708F69F044">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_C0819375-C2A4-4F3E-988B-F35C8A36710D">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_BD61F149-D26F-481B-88F1-1C3BD086EDBA">
-                    <dmn:text>-</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_525FA05D-4710-47EB-A02A-6590C45FDEAA">
-                    <dmn:text>true</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_8BC9FFC1-2C24-45D9-9BF3-F82C151E6E06">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:inputEntry id="_A197236A-5790-4130-8940-E43C39C11B15">
-                    <dmn:text>false</dmn:text>
-                </dmn:inputEntry>
-                <dmn:outputEntry id="_DD1C37EA-A987-43B7-B2A2-ADB2DB14EB50">
-                    <dmn:text>"肝移植"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_A76F974A-80DE-436A-B23D-00DB25088905">
-                    <dmn:text>3</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_0C7F71A7-A006-4DDF-A4C0-346B31F46B94">
-                    <dmn:text>"A"</dmn:text>
-                </dmn:outputEntry>
-                <dmn:outputEntry id="_FA22823A-1DAD-4C98-A4BF-074971CA32A0">
-                    <dmn:text>23</dmn:text>
-                </dmn:outputEntry>
-                <dmn:annotationEntry>
-                    <dmn:text/>
-                </dmn:annotationEntry>
-            </dmn:rule>
-        </dmn:decisionTable>
-    </dmn:decision>
-    <dmndi:DMNDI>
-        <dmndi:DMNDiagram id="_7FE5A781-82AB-4256-8726-AE886EBDA17F" name="DRG">
-            <di:extension>
-                <kie:ComponentsWidthsExtension>
-                    <kie:ComponentWidths dmnElementRef="_9C1593B7-3E66-4973-9527-52FC79B7BD42">
-                        <kie:width>50</kie:width>
-                        <kie:width>100</kie:width>
-                        <kie:width>100</kie:width>
-                        <kie:width>100</kie:width>
-                        <kie:width>100</kie:width>
-                        <kie:width>100</kie:width>
-                        <kie:width>100</kie:width>
-                        <kie:width>100</kie:width>
-                        <kie:width>100</kie:width>
-                        <kie:width>100</kie:width>
-                        <kie:width>100</kie:width>
-                        <kie:width>100</kie:width>
-                        <kie:width>100</kie:width>
-                        <kie:width>222</kie:width>
-                        <kie:width>100</kie:width>
-                        <kie:width>100</kie:width>
-                        <kie:width>100</kie:width>
-                        <kie:width>100</kie:width>
-                    </kie:ComponentWidths>
-                </kie:ComponentsWidthsExtension>
-            </di:extension>
-            <dmndi:DMNShape xmlns:p0="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                            id="dmnshape-drg-_EA7C64EA-87AA-45AA-9D0B-B3FDDE4C447B"
-                            dmnElementRef="p0:_EA7C64EA-87AA-45AA-9D0B-B3FDDE4C447B" isCollapsed="false">
-                <dmndi:DMNStyle>
-                    <dmndi:FillColor red="255" green="255" blue="255"/>
-                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
-                    <dmndi:FontColor red="0" green="0" blue="0"/>
-                </dmndi:DMNStyle>
-                <dc:Bounds x="978.2990654205607" y="550.3421052631579" width="100" height="50"/>
-                <dmndi:DMNLabel/>
-            </dmndi:DMNShape>
-            <dmndi:DMNShape xmlns:p1="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                            id="dmnshape-drg-_5C3A298E-5592-49EE-B06D-E79D0F725538"
-                            dmnElementRef="p1:_5C3A298E-5592-49EE-B06D-E79D0F725538" isCollapsed="false">
-                <dmndi:DMNStyle>
-                    <dmndi:FillColor red="255" green="255" blue="255"/>
-                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
-                    <dmndi:FontColor red="0" green="0" blue="0"/>
-                </dmndi:DMNStyle>
-                <dc:Bounds x="1106" y="550.3421052631579" width="100" height="50"/>
-                <dmndi:DMNLabel/>
-            </dmndi:DMNShape>
-            <dmndi:DMNShape xmlns:p2="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                            id="dmnshape-drg-_4F45D3F8-439F-4946-88ED-C43CC2BCA66A"
-                            dmnElementRef="p2:_4F45D3F8-439F-4946-88ED-C43CC2BCA66A" isCollapsed="false">
-                <dmndi:DMNStyle>
-                    <dmndi:FillColor red="255" green="255" blue="255"/>
-                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
-                    <dmndi:FontColor red="0" green="0" blue="0"/>
-                </dmndi:DMNStyle>
-                <dc:Bounds x="689.2990654205607" y="149.3421052631579" width="100" height="50"/>
-                <dmndi:DMNLabel/>
-            </dmndi:DMNShape>
-            <dmndi:DMNShape xmlns:p3="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                            id="dmnshape-drg-_FCC1E723-F6F9-4AB5-997D-8375BAA73716"
-                            dmnElementRef="p3:_FCC1E723-F6F9-4AB5-997D-8375BAA73716" isCollapsed="false">
-                <dmndi:DMNStyle>
-                    <dmndi:FillColor red="255" green="255" blue="255"/>
-                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
-                    <dmndi:FontColor red="0" green="0" blue="0"/>
-                </dmndi:DMNStyle>
-                <dc:Bounds x="723.2990654205607" y="74.68421052631578" width="100" height="50"/>
-                <dmndi:DMNLabel/>
-            </dmndi:DMNShape>
-            <dmndi:DMNShape xmlns:p4="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                            id="dmnshape-drg-_6552AC37-110B-4C89-B4A7-2C2301BD1E3A"
-                            dmnElementRef="p4:_6552AC37-110B-4C89-B4A7-2C2301BD1E3A" isCollapsed="false">
-                <dmndi:DMNStyle>
-                    <dmndi:FillColor red="255" green="255" blue="255"/>
-                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
-                    <dmndi:FontColor red="0" green="0" blue="0"/>
-                </dmndi:DMNStyle>
-                <dc:Bounds x="658.1588785046729" y="283.6842105263158" width="120" height="50"/>
-                <dmndi:DMNLabel/>
-            </dmndi:DMNShape>
-            <dmndi:DMNShape xmlns:p5="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                            id="dmnshape-drg-_66947A87-A35E-41F4-92A4-6584181B0678"
-                            dmnElementRef="p5:_66947A87-A35E-41F4-92A4-6584181B0678" isCollapsed="false">
-                <dmndi:DMNStyle>
-                    <dmndi:FillColor red="255" green="255" blue="255"/>
-                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
-                    <dmndi:FontColor red="0" green="0" blue="0"/>
-                </dmndi:DMNStyle>
-                <dc:Bounds x="671.75" y="225.34210526315792" width="107" height="50"/>
-                <dmndi:DMNLabel/>
-            </dmndi:DMNShape>
-            <dmndi:DMNShape xmlns:p6="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                            id="dmnshape-drg-_2B274689-6297-4E38-9002-EAB3908D8705"
-                            dmnElementRef="p6:_2B274689-6297-4E38-9002-EAB3908D8705" isCollapsed="false">
-                <dmndi:DMNStyle>
-                    <dmndi:FillColor red="255" green="255" blue="255"/>
-                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
-                    <dmndi:FontColor red="0" green="0" blue="0"/>
-                </dmndi:DMNStyle>
-                <dc:Bounds x="830.9944774851317" y="31.684210526315795" width="104.54545454545456" height="50"/>
-                <dmndi:DMNLabel/>
-            </dmndi:DMNShape>
-            <dmndi:DMNShape xmlns:p7="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                            id="dmnshape-drg-_DA22A268-B21F-4A8E-9323-3AD49C1AFCD3"
-                            dmnElementRef="p7:_DA22A268-B21F-4A8E-9323-3AD49C1AFCD3" isCollapsed="false">
-                <dmndi:DMNStyle>
-                    <dmndi:FillColor red="255" green="255" blue="255"/>
-                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
-                    <dmndi:FontColor red="0" green="0" blue="0"/>
-                </dmndi:DMNStyle>
-                <dc:Bounds x="658" y="360.3421052631579" width="100" height="50"/>
-                <dmndi:DMNLabel/>
-            </dmndi:DMNShape>
-            <dmndi:DMNShape xmlns:p8="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                            id="dmnshape-drg-_48E82F1F-54C0-4CFF-91CC-B0AC5E42D638"
-                            dmnElementRef="p8:_48E82F1F-54C0-4CFF-91CC-B0AC5E42D638" isCollapsed="false">
-                <dmndi:DMNStyle>
-                    <dmndi:FillColor red="255" green="255" blue="255"/>
-                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
-                    <dmndi:FontColor red="0" green="0" blue="0"/>
-                </dmndi:DMNStyle>
-                <dc:Bounds x="755.5516142735769" y="495" width="109.36363636363637" height="50"/>
-                <dmndi:DMNLabel/>
-            </dmndi:DMNShape>
-            <dmndi:DMNShape xmlns:p9="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                            id="dmnshape-drg-_DB1EA886-5AB5-4E45-9BE5-540B8CCC307F"
-                            dmnElementRef="p9:_DB1EA886-5AB5-4E45-9BE5-540B8CCC307F" isCollapsed="false">
-                <dmndi:DMNStyle>
-                    <dmndi:FillColor red="255" green="255" blue="255"/>
-                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
-                    <dmndi:FontColor red="0" green="0" blue="0"/>
-                </dmndi:DMNStyle>
-                <dc:Bounds x="713.5981308411215" y="428.3421052631579" width="100" height="50"/>
-                <dmndi:DMNLabel/>
-            </dmndi:DMNShape>
-            <dmndi:DMNShape xmlns:p10="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                            id="dmnshape-drg-_38B0568C-433F-45EA-AAA9-EB88802AB93F"
-                            dmnElementRef="p10:_38B0568C-433F-45EA-AAA9-EB88802AB93F" isCollapsed="false">
-                <dmndi:DMNStyle>
-                    <dmndi:FillColor red="255" green="255" blue="255"/>
-                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
-                    <dmndi:FontColor red="0" green="0" blue="0"/>
-                </dmndi:DMNStyle>
-                <dc:Bounds x="953.090909090909" y="13.684210526315795" width="100" height="50"/>
-                <dmndi:DMNLabel/>
-            </dmndi:DMNShape>
-            <dmndi:DMNShape xmlns:p11="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                            id="dmnshape-drg-_9252FDE3-3E86-4C0F-8766-86D9794D4317"
-                            dmnElementRef="p11:_9252FDE3-3E86-4C0F-8766-86D9794D4317" isCollapsed="false">
-                <dmndi:DMNStyle>
-                    <dmndi:FillColor red="255" green="255" blue="255"/>
-                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
-                    <dmndi:FontColor red="0" green="0" blue="0"/>
-                </dmndi:DMNStyle>
-                <dc:Bounds x="850.2990654205607" y="550.3421052631579" width="100" height="50"/>
-                <dmndi:DMNLabel/>
-            </dmndi:DMNShape>
-            <dmndi:DMNShape xmlns:p12="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                            id="dmnshape-drg-_D134252D-AB8F-4E01-B19A-308D58522C21"
-                            dmnElementRef="p12:_D134252D-AB8F-4E01-B19A-308D58522C21" isCollapsed="false">
-                <dmndi:DMNStyle>
-                    <dmndi:FillColor red="255" green="255" blue="255"/>
-                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
-                    <dmndi:FontColor red="0" green="0" blue="0"/>
-                </dmndi:DMNStyle>
-                <dc:Bounds x="1135" y="275" width="100" height="50"/>
-                <dmndi:DMNLabel/>
-            </dmndi:DMNShape>
-            <dmndi:DMNEdge xmlns:p13="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                           id="dmnedge-drg-_B96C372E-F2A1-4CBF-90E3-42583A14CDFF"
-                           dmnElementRef="p13:_B96C372E-F2A1-4CBF-90E3-42583A14CDFF">
-                <di:waypoint x="708" y="385.3421052631579"/>
-                <di:waypoint x="1185" y="300"/>
-            </dmndi:DMNEdge>
-            <dmndi:DMNEdge xmlns:p14="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                           id="dmnedge-drg-_A112C008-BF52-4CA6-AB74-004255F1EBF0"
-                           dmnElementRef="p14:_A112C008-BF52-4CA6-AB74-004255F1EBF0">
-                <di:waypoint x="900.2990654205607" y="575.3421052631579"/>
-                <di:waypoint x="1185" y="300"/>
-            </dmndi:DMNEdge>
-            <dmndi:DMNEdge xmlns:p15="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                           id="dmnedge-drg-_162D93F7-C9A3-4F2F-BD7E-83BB05D4EAC2"
-                           dmnElementRef="p15:_162D93F7-C9A3-4F2F-BD7E-83BB05D4EAC2">
-                <di:waypoint x="718.1588785046729" y="308.6842105263158"/>
-                <di:waypoint x="1185" y="300"/>
-            </dmndi:DMNEdge>
-            <dmndi:DMNEdge xmlns:p16="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                           id="dmnedge-drg-_DC0DC9FF-AC2F-4BB8-91A0-2EF98F9DCED2"
-                           dmnElementRef="p16:_DC0DC9FF-AC2F-4BB8-91A0-2EF98F9DCED2">
-                <di:waypoint x="763.5981308411215" y="453.3421052631579"/>
-                <di:waypoint x="1185" y="300"/>
-            </dmndi:DMNEdge>
-            <dmndi:DMNEdge xmlns:p17="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                           id="dmnedge-drg-_5FA28135-D89E-4002-9181-7759F4268F9D"
-                           dmnElementRef="p17:_5FA28135-D89E-4002-9181-7759F4268F9D">
-                <di:waypoint x="773.2990654205607" y="99.68421052631578"/>
-                <di:waypoint x="1185" y="300"/>
-            </dmndi:DMNEdge>
-            <dmndi:DMNEdge xmlns:p18="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                           id="dmnedge-drg-_8579536C-248C-49E7-ACEE-766A31047B40"
-                           dmnElementRef="p18:_8579536C-248C-49E7-ACEE-766A31047B40">
-                <di:waypoint x="739.2990654205607" y="174.3421052631579"/>
-                <di:waypoint x="1185" y="300"/>
-            </dmndi:DMNEdge>
-            <dmndi:DMNEdge xmlns:p19="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                           id="dmnedge-drg-_F38060A0-D027-47A2-88BF-C0A238ED7070"
-                           dmnElementRef="p19:_F38060A0-D027-47A2-88BF-C0A238ED7070">
-                <di:waypoint x="725.25" y="250.34210526315792"/>
-                <di:waypoint x="1185" y="300"/>
-            </dmndi:DMNEdge>
-            <dmndi:DMNEdge xmlns:p20="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                           id="dmnedge-drg-_8216C77A-F259-444E-96C5-2CA29A878F81"
-                           dmnElementRef="p20:_8216C77A-F259-444E-96C5-2CA29A878F81">
-                <di:waypoint x="883.267204757859" y="56.684210526315795"/>
-                <di:waypoint x="1185" y="300"/>
-            </dmndi:DMNEdge>
-            <dmndi:DMNEdge xmlns:p21="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                           id="dmnedge-drg-_A49A36BD-C9FA-4341-B507-F84101D5C833"
-                           dmnElementRef="p21:_A49A36BD-C9FA-4341-B507-F84101D5C833">
-                <di:waypoint x="810.2334324553951" y="520"/>
-                <di:waypoint x="1185" y="300"/>
-            </dmndi:DMNEdge>
-            <dmndi:DMNEdge xmlns:p22="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                           id="dmnedge-drg-_77E6D4C5-570D-43E9-905E-4F076BF5E8EC"
-                           dmnElementRef="p22:_77E6D4C5-570D-43E9-905E-4F076BF5E8EC">
-                <di:waypoint x="1156" y="575.3421052631579"/>
-                <di:waypoint x="1185" y="300"/>
-            </dmndi:DMNEdge>
-            <dmndi:DMNEdge xmlns:p23="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                           id="dmnedge-drg-_678F4C9C-53D0-4B4D-9B1F-2972AAB95753"
-                           dmnElementRef="p23:_678F4C9C-53D0-4B4D-9B1F-2972AAB95753">
-                <di:waypoint x="1028.2990654205607" y="575.3421052631579"/>
-                <di:waypoint x="1185" y="300"/>
-            </dmndi:DMNEdge>
-            <dmndi:DMNEdge xmlns:p24="https://kiegroup.org/dmn/_490BCE94-7EA7-4188-8EE4-053D12443E12"
-                           id="dmnedge-drg-_5502DE8A-5910-4781-A633-3137BD6EA270"
-                           dmnElementRef="p24:_5502DE8A-5910-4781-A633-3137BD6EA270">
-                <di:waypoint x="1003.090909090909" y="38.684210526315795"/>
-                <di:waypoint x="1185" y="300"/>
-            </dmndi:DMNEdge>
-        </dmndi:DMNDiagram>
-    </dmndi:DMNDI>
+    <dmn:variable id="_0CB2376F-D44F-4E0D-B745-73CD78A389AB" name="是否适宜手术治疗" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:inputData id="_5C3A298E-5592-49EE-B06D-E79D0F725538" name="是否适宜消融治疗">
+    <dmn:extensionElements/>
+    <dmn:variable id="_54F10E02-FC05-43A6-A282-2D4AE9C9AA23" name="是否适宜消融治疗" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:inputData id="_4F45D3F8-439F-4946-88ED-C43CC2BCA66A" name="肿瘤部位">
+    <dmn:extensionElements/>
+    <dmn:variable id="_77A90B2C-6E83-4FF3-BB75-3A3AB97B5AB3" name="肿瘤部位" typeRef="string"/>
+  </dmn:inputData>
+  <dmn:inputData id="_FCC1E723-F6F9-4AB5-997D-8375BAA73716" name="肿瘤大小">
+    <dmn:extensionElements/>
+    <dmn:variable id="_24E1B80B-D99B-4EE7-87AD-230DE4773C6B" name="肿瘤大小" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:inputData id="_6552AC37-110B-4C89-B4A7-2C2301BD1E3A" name="有无慢性肝病">
+    <dmn:extensionElements/>
+    <dmn:variable id="_0A17EB0E-8F77-4334-8CF3-DFD14B4B73D0" name="有无慢性肝病" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:inputData id="_66947A87-A35E-41F4-92A4-6584181B0678" name="有无肝脏纤维化">
+    <dmn:extensionElements/>
+    <dmn:variable id="_44306C8E-48A2-418A-B966-D0E23E8C94BD" name="有无肝脏纤维化" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:inputData id="_2B274689-6297-4E38-9002-EAB3908D8705" name="ICG-R15">
+    <dmn:extensionElements/>
+    <dmn:variable id="_4F9367B9-8D43-48BD-928E-3249E836E2B0" name="ICG-R15" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:inputData id="_DA22A268-B21F-4A8E-9323-3AD49C1AFCD3" name="有无肝实质损伤">
+    <dmn:extensionElements/>
+    <dmn:variable id="_6D3CACBB-D00F-474E-9783-612D7D980A12" name="有无肝实质损伤" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:inputData id="_48E82F1F-54C0-4CFF-91CC-B0AC5E42D638" name="剩余肝脏体积占标准肝脏体积百分比">
+    <dmn:extensionElements/>
+    <dmn:variable id="_0AB14F2B-CB42-45BD-9E4C-31ED20560AB8" name="剩余肝脏体积占标准肝脏体积百分比" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:inputData id="_DB1EA886-5AB5-4E45-9BE5-540B8CCC307F" name="有无肝硬化">
+    <dmn:extensionElements/>
+    <dmn:variable id="_5CC4FC3D-5937-46E1-A7A3-703A55D7850D" name="有无肝硬化" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:inputData id="_38B0568C-433F-45EA-AAA9-EB88802AB93F" name="肝功能Child评分">
+    <dmn:extensionElements/>
+    <dmn:variable id="_0ECCCCCB-F2E1-42BC-A386-B6D0220C4A9F" name="肝功能Child评分" typeRef="string"/>
+  </dmn:inputData>
+  <dmn:inputData id="_9252FDE3-3E86-4C0F-8766-86D9794D4317" name="是否接受有创治疗">
+    <dmn:extensionElements/>
+    <dmn:variable id="_A0C89849-9020-4BE7-949E-247952DA8558" name="是否接受有创治疗" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:decision id="_D134252D-AB8F-4E01-B19A-308D58522C21" name="推荐结论">
+    <dmn:extensionElements/>
+    <dmn:variable id="_0C7B405A-0AEE-4BD7-AEBE-6487138EBCD6" name="推荐结论" typeRef="string"/>
+    <dmn:informationRequirement id="_B96C372E-F2A1-4CBF-90E3-42583A14CDFF">
+      <dmn:requiredInput href="#_DA22A268-B21F-4A8E-9323-3AD49C1AFCD3"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_A112C008-BF52-4CA6-AB74-004255F1EBF0">
+      <dmn:requiredInput href="#_9252FDE3-3E86-4C0F-8766-86D9794D4317"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_162D93F7-C9A3-4F2F-BD7E-83BB05D4EAC2">
+      <dmn:requiredInput href="#_6552AC37-110B-4C89-B4A7-2C2301BD1E3A"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_DC0DC9FF-AC2F-4BB8-91A0-2EF98F9DCED2">
+      <dmn:requiredInput href="#_DB1EA886-5AB5-4E45-9BE5-540B8CCC307F"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_5FA28135-D89E-4002-9181-7759F4268F9D">
+      <dmn:requiredInput href="#_FCC1E723-F6F9-4AB5-997D-8375BAA73716"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_8579536C-248C-49E7-ACEE-766A31047B40">
+      <dmn:requiredInput href="#_4F45D3F8-439F-4946-88ED-C43CC2BCA66A"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_F38060A0-D027-47A2-88BF-C0A238ED7070">
+      <dmn:requiredInput href="#_66947A87-A35E-41F4-92A4-6584181B0678"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_8216C77A-F259-444E-96C5-2CA29A878F81">
+      <dmn:requiredInput href="#_2B274689-6297-4E38-9002-EAB3908D8705"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_A49A36BD-C9FA-4341-B507-F84101D5C833">
+      <dmn:requiredInput href="#_48E82F1F-54C0-4CFF-91CC-B0AC5E42D638"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_77E6D4C5-570D-43E9-905E-4F076BF5E8EC">
+      <dmn:requiredInput href="#_5C3A298E-5592-49EE-B06D-E79D0F725538"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_678F4C9C-53D0-4B4D-9B1F-2972AAB95753">
+      <dmn:requiredInput href="#_EA7C64EA-87AA-45AA-9D0B-B3FDDE4C447B"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_5502DE8A-5910-4781-A633-3137BD6EA270">
+      <dmn:requiredInput href="#_38B0568C-433F-45EA-AAA9-EB88802AB93F"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_9C1593B7-3E66-4973-9527-52FC79B7BD42" hitPolicy="COLLECT" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_0C2BC784-4832-43B6-BB9C-13089E2773E2">
+        <dmn:inputExpression id="_E0FD9B12-562B-4D37-919B-41CE5AC016CC" typeRef="string">
+          <dmn:text>肝功能Child评分</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_942312A7-5DD6-4387-867F-378BD10D1022">
+        <dmn:inputExpression id="_D4AD791B-28C5-410B-AE55-B34E7195F11F" typeRef="number">
+          <dmn:text>ICG-R15</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_D33F9B93-E32B-4AC6-BF08-2A58EF1D1F0B">
+        <dmn:inputExpression id="_AC5B2E7F-24AC-43CA-9480-5EA0CAA62CE0" typeRef="number">
+          <dmn:text>肿瘤大小</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_113A0592-3D7A-4473-9D13-79967C511007">
+        <dmn:inputExpression id="_85C84BB6-02D9-4FB3-B465-B3995FA271CF" typeRef="string">
+          <dmn:text>肿瘤部位</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_955F4929-E686-4DA5-962C-239F472CFA14">
+        <dmn:inputExpression id="_8A03C6FD-523A-44FF-8167-1DCDC917FB88" typeRef="boolean">
+          <dmn:text>有无肝脏纤维化</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_F51D468F-612F-4EB7-B392-6B3795AFDF8B">
+        <dmn:inputExpression id="_71CD7927-DFBC-4ED1-9AA3-574A07FFB58E" typeRef="boolean">
+          <dmn:text>有无慢性肝病</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_1687184B-F4E4-4625-B1A8-D2DE0765937A">
+        <dmn:inputExpression id="_E3167933-3C16-497C-A362-D8741184AA7C" typeRef="boolean">
+          <dmn:text>有无肝实质损伤</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_48969418-9638-4024-AB9F-250D39020F73">
+        <dmn:inputExpression id="_644A2FC0-F807-4EC0-8F32-511BB16B1216" typeRef="boolean">
+          <dmn:text>有无肝硬化</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_618CD7F7-8149-4864-BDF8-7D2EA5A4B038">
+        <dmn:inputExpression id="_B55292A7-596C-4B54-80AD-C2D663EE58C9" typeRef="number">
+          <dmn:text>剩余肝脏体积占标准肝脏体积百分比</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_A3FEE6DE-57D2-4DB6-8298-9313FA941784">
+        <dmn:inputExpression id="_3FE6F3BD-A7C3-403D-A57C-E26AD108CFC2" typeRef="boolean">
+          <dmn:text>是否接受有创治疗</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_9A5DE81E-2D31-4B34-98C5-E685F9342B6B">
+        <dmn:inputExpression id="_D36DACBA-00B2-4305-9EEB-3541C7A4A376" typeRef="boolean">
+          <dmn:text>是否适宜手术治疗</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_E4978CDE-892C-45B4-8C09-23475FE12D62">
+        <dmn:inputExpression id="_45EE49A3-0725-446F-97CD-B8D5630D3DD1" typeRef="boolean">
+          <dmn:text>是否适宜消融治疗</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_B5D4FB9D-18F9-4190-8EB1-322CC1B9DB29" name="推荐治疗方式" typeRef="string"/>
+      <dmn:output id="_8511BD3C-2E70-4637-AA72-3821A1E0F509" name="证据等级" typeRef="number"/>
+      <dmn:output id="_8FED7482-8A52-4CF2-8EB2-1DDF62DA0CB2" name="推荐" typeRef="string"/>
+      <dmn:output id="_9C9A0A28-6D90-40A4-92DA-6160B1A20F7C" name="ID" typeRef="number"/>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_B155AEAB-6993-4E26-B5CC-474153ADA129">
+        <dmn:inputEntry id="_6439F353-CA7F-4B14-B398-C6BDBFB8D6F7">
+          <dmn:text>"A"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_388F30EF-0C19-493E-B57F-915731480639">
+          <dmn:text>&lt;30</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0E26F3D3-319B-4739-93AC-76A1080E5BE4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E51C4233-92AA-4CD9-938B-2F67C2FEE9A6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1A4D27D1-3C3F-4443-84BC-7BD3045F7995">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DBA0DB39-B8A9-4E0B-B634-47946CD2E06B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_525A369F-437E-4024-9B80-BB7AA307E41B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8CED9AE0-BB22-47F8-A0C3-A4B7F295E4A9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B51BD831-1CCA-4296-BF15-A8340A108063">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C8A970AE-4932-48A4-A8AF-C265476D44FB">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FCC395FB-3C9E-4EC4-A8A9-7565EA92B582">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_21B0BA0D-739C-47F7-AFD3-16D607E0FB5E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_0C8DDC0A-0395-46A8-A980-E5C04808AC63">
+          <dmn:text>"手术切除"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_B6CB4456-33F2-4522-8353-DC096CE0534A">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_7DFE507F-2A25-4C0A-A0C1-7E2FFE44E9BB">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_9A3945C7-67CD-409C-93E2-0637CA4F06BF">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_DEDA41B5-ACA0-4E55-8982-D7143AB1240F">
+        <dmn:inputEntry id="_12AE1BFA-4789-4BC9-B4D7-0C40E8AF3DC5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_516E5132-2C0E-4D97-AE58-FCE02F436556">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E7654E86-385E-4732-8E6A-326EF57D7400">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EE2D308A-B859-4D1A-BB57-D294432AA339">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AFE8A44A-5BCD-4396-9869-5AB15A2E25BD">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C73DED50-747E-4ACA-B0C9-F8ECA0E746DB">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7749BD10-1667-4F6D-9077-9BB007865550">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B5614582-6536-47C7-83EB-8AEDD4543E53">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_649CD1E4-20EB-46A1-8791-FF50EDD27472">
+          <dmn:text>&gt;40</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C0F8E6D8-4C5C-4B0A-B22B-7C690491E2DC">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_740AB860-FB01-432D-914C-E5B2319BBDF4">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_70A51911-4E4D-4AB4-B640-487172882807">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_692FD276-419C-46DD-96B3-AA878435286C">
+          <dmn:text>"手术切除"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_5956E701-0310-42E4-B565-2186724B4D7F">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_DAD7DF91-479B-44ED-90A8-D822D197229D">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_D8C09F18-A8EC-4FAD-A8E2-939211768154">
+          <dmn:text>2</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_9F9C3B0A-5145-4B31-9F44-46F81C539F9E">
+        <dmn:inputEntry id="_6C57BDC9-6FFF-4710-A01B-F884D43D001F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E88D76F3-32E6-4651-ACEF-2A10D966E6B9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CBB2B2B8-E6A7-48E2-95DA-7A6B8B19B790">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F8E21FAC-D98E-408F-87C5-2F2F74D2EF4D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_27176F69-E2A5-456A-88A2-F0E549E8C5AA">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AFDB0A1E-DE81-4C9B-AC02-FA8E580E3D3E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F1694FD6-B308-4CFB-9256-54CFF7665F30">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8E5BE6EF-5A34-4443-BD45-9880D11B7A5C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6B72566A-500A-44E9-B1D0-CFE50EF2C0DC">
+          <dmn:text>&gt;40</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6CC85A44-8EFC-4630-9BB8-7C1A928AF5FD">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1EE1EBEA-BB9D-47C3-A56B-AB2B2418500A">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A7F6148A-7D24-466E-B4D9-EF902663232D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_06ACF268-F0D5-44AC-9972-A8079BCB444F">
+          <dmn:text>"手术切除"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_E9887852-6C52-4102-81BB-74BA45E544B5">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_624D021B-6B04-4D21-988A-343722D18CB2">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_3AB9462E-BC8D-4229-94D7-3460595D1B94">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_640BDCC1-67DC-4A3B-ADD1-B929E5C816BD">
+        <dmn:inputEntry id="_96C2B738-3DFB-44D1-AD4E-08561352CF84">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FFCC659A-FB3C-42ED-8332-CE3D079A9A02">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3EE2B606-AB9E-451F-B2DE-1D79666E8F02">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_87D0C127-46EA-4431-B5E0-4B669DFA35FB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7526D449-2F60-4951-8FBD-FE40DC55617A">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CD9902BA-B943-45AB-AA71-1409CAC545EE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2E54C13E-5178-451D-B886-07241399BB2D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AEB68B84-C6C4-46CE-8E07-6E984625A15F">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_637BD428-9EC5-43A8-8941-4CC1299A8B3A">
+          <dmn:text>&gt;40</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D8A3AA72-1191-4801-8766-14FFDFE48F0E">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_98B48231-F8A3-4478-9AEA-714A24BC940C">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C9BEC3DA-F9C3-4DEF-AADF-D66A20886DC3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_579C200D-180B-4C92-95EE-813D12C20DCC">
+          <dmn:text>"手术切除"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_410D8843-FA79-453F-A762-B035967A0931">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_7D6A2A7B-2EA0-4C36-880A-A95B5722AA47">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_D7EF9991-9291-4056-86B4-2E7103063AB5">
+          <dmn:text>4</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_E5BDF05B-15F6-4C0E-B97F-ADA024132526">
+        <dmn:inputEntry id="_0566FC54-3F9C-454D-80A9-97B04AE166CC">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_619A2A80-2FC4-43F6-AA9E-43F90E3E7E93">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D93B1F51-EE9C-4389-8085-EEA7AE9D329C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_95E903DD-DC25-49AA-B54B-69883E61B69E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_333C093D-7AFD-4C94-ABC1-3DD464519A8B">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_54F6B4DF-6DD6-4D80-AB46-035130C81679">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9E0A4B3C-1415-40AB-95AD-9DBBE8450554">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A98676C1-CBF4-4BEC-99D9-A52FBCA016F8">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ED8F95A5-7EA9-4029-AADF-7F37822CC115">
+          <dmn:text>&gt;30</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CA4C12FB-F896-4AC8-B4E9-D0F8D1314766">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EDE69575-8B9E-4145-9451-D44EA19FB2AD">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_156A2752-CB91-4D67-A000-D63AB29CAAF1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_7E81668E-7405-4B25-BE4E-14DE25CC26A7">
+          <dmn:text>"手术切除"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_A23904AB-291E-4CEF-AC82-88DFD5F7F62D">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_00139052-112D-4513-98E7-2CD18DDCECE8">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_CED434E9-F10E-4652-AC6B-644874E7DC1D">
+          <dmn:text>5</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_46D171CB-7B1B-4C2F-BDE5-1CFBB06C0762">
+        <dmn:inputEntry id="_81F22A6E-5AAD-4078-AD11-EB74EF84DA9D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E63CD843-E4D8-45A3-8262-2ED8898E4402">
+          <dmn:text>&gt;39</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B4FE1A1A-A43B-4F63-BDA7-CA6841D9E2C1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7BED95A0-AD68-4C21-A587-19724D3D0C00">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B27695C4-BC48-4902-82C5-C15A781FCFF7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E4890D90-AD0E-4A04-9023-55F03506E3C3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2DBADABD-F662-4753-885E-07944E302B19">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3A6BCB41-1833-431C-A10B-782B89AA141D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_18E46BE8-7908-4242-B28B-A3E364FB7035">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0D30FEE2-858E-4189-9BF0-2AD530F71FC9">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_79505324-0A71-41B5-AC7B-B45399309404">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_54EDB7A9-028D-4F1E-B3C9-D2F1835FCB2F">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_E8EE4041-A08D-45A3-AB74-97E10CF1AE3D">
+          <dmn:text>"TACE"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_4BB04779-E0D9-45CC-BA44-9CCB0BCE8E01">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_795E9E46-D179-4EB1-9C87-C12389D4F683">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_BC0BD1A6-0C3C-4B1C-B433-FC2B3E9CE6FE">
+          <dmn:text>6</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_3D7AA232-654B-49E4-A139-EAC4F233D846">
+        <dmn:inputEntry id="_7A6A30AB-A041-4E84-AF17-0525E2510944">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A75956F2-B8D9-4CF7-BBD2-F2E15CCDC50B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EB3C9097-73AD-47C4-856D-E4E706841843">
+          <dmn:text>[3..5]</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DA2011E6-6C11-42C6-A070-F8C2E2DA7288">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_622F3E6D-B1D4-4CA7-9A28-A637A1D63CF3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4CD63771-B39C-4091-94D9-CCD599393A61">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_02939ECD-AAFD-470C-9A08-6F904F63574A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5B638C3C-1E71-4FB2-A18D-F6EF29FD8D26">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7694976F-472B-4471-B416-5C3DBBA09312">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7F028C43-4CBD-4E45-936E-DADCCE439931">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0C7C56CD-20A0-40E3-A43A-F07C2085F94B">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2435223F-7850-432D-A57C-B4501F895696">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_B4784DC2-A7BA-4118-AFE5-E16B7F2EDA33">
+          <dmn:text>"手术切除"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_1800072E-B250-4001-B107-008C8E2BC0B6">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_7DBC2F66-D8E6-4B61-AF98-FA075D3DF1BF">
+          <dmn:text>"A"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_75F6C7CF-472D-4703-AFF0-12EFF12B8756">
+          <dmn:text>7</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_BB297DF6-30D8-44B4-8D5F-DA888A17FB5F">
+        <dmn:inputEntry id="_95C7F3C1-4B4F-4F83-B0BF-4958C30DCE51">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_706B3E43-A0C6-4C27-8784-36C200F00924">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ECC8F73B-E70E-42FB-B498-7DE9A3E5D8E3">
+          <dmn:text>[3..5]</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A53CDE37-C955-4FB7-9A61-739C44BC0AAF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_299B6F23-48B2-4AB8-9A51-6FC5100341E9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1D434266-715A-4046-9CCD-68EE7DDBFB59">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F4916735-0AC3-46FE-90C7-225E8146E636">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_83D6B30B-2E34-4576-BB20-AD8EC79B60DA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_026AAA9D-2DD8-4FB9-B0E0-497924D669EC">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8F46BCFB-13AD-4136-B567-EF4146662D8C">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2F35D892-8455-4BD1-89C7-79AB3E13628E">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F61E558C-15B1-47E3-8C3C-0899DD167528">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_E24215C9-586B-463C-92BB-B26E7CBDD569">
+          <dmn:text>"消融联合TACE治疗"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_0A71BD2A-6CBF-41B3-B8DE-EAE67B6951BA">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_A2A13A65-A5ED-423D-9085-2D7336DCEA48">
+          <dmn:text>"B"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_72E69D6B-2065-4263-BD21-376BD00B013C">
+          <dmn:text>8</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_F048F009-52DF-4CA0-A06A-1CAF1E9ECDED">
+        <dmn:inputEntry id="_6336C8E8-CBA4-44CB-BCCA-F32372C4A408">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_00ADEEB1-473C-48C5-A13F-08A9F50053DD">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9DBB4B9F-5065-49A7-8A3C-DC5CB4FBDA13">
+          <dmn:text>&lt;3</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F3DE3634-2A3F-49D1-9BC6-02FF84496C47">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E08AF440-6A4F-4385-8F8E-D4A8A731EF95">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D9C4A6FC-C861-4712-842C-99F959F894C1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6B5F62B3-537A-4B00-80D3-882761C1A89A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_42F784E6-D825-4387-BA17-ED90FD84AA59">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E83559E2-89CF-410C-8938-984C5067643F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B77D891E-6E9A-47EA-A560-02E1B8143F7C">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E290D1B8-9A9D-48F0-83D5-797E66652162">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9629F6E9-E698-4ADF-B0D4-1FEFEDAEF0FD">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_D1AFDC10-49AC-4B4A-A674-CC02F53DBD09">
+          <dmn:text>"消融治疗"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_70C8DC7B-20D4-4822-BCC6-146DD1FB29B1">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_0F3CF025-BFD5-406F-B608-9EF1CF1CFD82">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_4000A693-2EA3-496C-908E-D33CD2000673">
+          <dmn:text>9</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_DC43AB63-BCA9-4F9E-856A-E70B5F0C7A85">
+        <dmn:inputEntry id="_FED25882-1DD5-4A42-9BE6-7C562AE6D473">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_956BA74F-B085-4C08-9307-BBDA72AC84F9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D7A4ADC9-9196-4E7A-9361-9B46981186ED">
+          <dmn:text>&lt;=2</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_599A081F-BCA6-4EEA-AB6A-29721CBD26C8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F8D0318F-458B-4445-93F1-9E5776A4EBF5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_400D76F1-BBEF-4B53-9769-F87F274B7BFB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C39E290C-07A4-4929-904D-3FB9CA540815">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AE7DACA1-9895-4980-A95F-9C298C6995A7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C6B182D1-95D0-4F03-9A3B-F3CD58BF9737">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1C3A6BFD-BF3C-46E9-A0E8-96979C1C0BCE">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_21BF02CB-2A87-4687-8CFB-64E110E4ECE7">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A90849A0-A2E2-4BF8-BB7D-3D9B1C87E9E4">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_2B2FACCB-93FF-4F1E-972B-3F5780A62090">
+          <dmn:text>"手术切除"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_804296A0-B7A3-4E0A-AD91-03092145DFAD">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_2510B0D9-419F-4D71-B850-D3E92D37EC23">
+          <dmn:text>"A"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_75BDD909-437C-4AC5-841A-6AED7A766BC8">
+          <dmn:text>10</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_6A0D7412-634F-4DDC-83B8-009E273DCEC7">
+        <dmn:inputEntry id="_8A216820-3024-4AD8-886B-79698BEAC0BA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_456ABBFB-3476-46E7-AEFB-6AD998930412">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_760B7D47-DC5A-401E-B2FA-BB3C39FF1F04">
+          <dmn:text>&lt;=2</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C70C1BB2-D9D0-4E04-9DD5-B80EDE2DBC47">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B21273C3-77BC-4BC8-A489-D588D34C9280">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BFDA228B-B473-439F-B2E4-CC18E3B25F83">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_30DD001F-FDE1-4F82-9035-445F2759F49D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BC2CD2B2-4914-4109-988D-81D8633FF0C0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DF516DF6-EB57-4BE8-B917-4622E3949202">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DB2828CC-F702-4FB2-966B-77FF3C4323A6">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_697ED45F-7125-4ACE-867A-0AC8FDB57F3A">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1C5DDA3F-AE2C-41D0-9661-09DF89DFD5DB">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_0AAB39E5-4FAF-45FB-B9D4-BB7BB8D9D34D">
+          <dmn:text>"手术切除"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_359237CB-7A46-417E-A692-923C86BDAA73">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_49150228-9437-46FA-A0BA-4698FD8B6626">
+          <dmn:text>"A"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_C1F7A770-3531-4D8C-946E-813EA6704FCC">
+          <dmn:text>11</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_41E315B4-2BFD-4F45-B77A-6B9C363681E0">
+        <dmn:inputEntry id="_51F42B95-BDE3-4304-AE18-17B2EE62E712">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_02BCD641-B361-46AB-B377-ACA9DC21C5D7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BAAE45FE-F5BA-4266-8651-B9DAA55CF6C9">
+          <dmn:text>&lt;=2</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4B99E0A1-505F-4461-9B3C-1661579226E9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_92279974-6419-4C1C-AA2E-B73544BA3AF9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_60CBDBAC-23D0-4A2C-8D92-974E49529365">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_100F2E84-D208-4391-8F60-211659CF9B39">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0ABD1F57-E041-49E8-85F5-841A0569004F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FE50D87C-0775-4BA7-88C6-DA9DE667078C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_53ED3051-ED92-43AE-ABA5-B67B33F47638">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7638C04D-EC6E-4DB9-96E1-44A153B9F57F">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BA4A073E-8F16-40C1-9519-48451D3D362E">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_57B2261F-0170-4A40-9A6B-8E148F5E1EB8">
+          <dmn:text>"消融治疗"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_677DAB0E-AE18-4F86-B5B1-EC0F38FCC004">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_AFE3F2C7-71E7-413C-9133-F6335B86DD24">
+          <dmn:text>"A"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_A0A71221-867A-4F09-8D0E-E13BCCFDE115">
+          <dmn:text>12</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_878B4A5D-107D-4242-99E1-C36101A8354C">
+        <dmn:inputEntry id="_7EE8775B-E698-4A19-87ED-E37CBA0A8553">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C9A8281D-6412-44F6-A927-914D881850C4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C781A674-B2E8-48C7-87CA-C35728E38BB0">
+          <dmn:text>&lt;=2</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B935520B-15F1-4971-A8D7-EA768A63136C">
+          <dmn:text>"中央型"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_88645E7C-14F3-4DA7-A0F0-57E39F8812DF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D694CFC7-35A9-4B4E-9AA6-A5F6FADC868F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E7F538E0-081B-4EBB-9893-7B6E14010E35">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CF8AADD3-3DDB-482D-A979-26605FFD4336">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B935D877-44EF-4829-90C1-0366D6CFEA1A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B4DECDCB-69F5-443C-BF17-2691A368530A">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_19069D87-85C5-40B0-BE98-C681EA1B8348">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B8EDA740-DFF7-4D0D-B8FB-3762C7863C31">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_3C620EDC-412C-4265-B2B3-325FC00F5DB8">
+          <dmn:text>"消融治疗"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_41E2914F-5566-49E7-B83F-975D2EEB78EB">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_F0B752BB-9FDD-453C-9315-0AE0943CC3CC">
+          <dmn:text>"A"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_E1C04F93-C0D1-479A-A5DC-FD23D8D1BA48">
+          <dmn:text>13</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_1F86D0B4-3DDB-4202-82A5-A58256C69BFD">
+        <dmn:inputEntry id="_CB687144-0DBA-4B78-A774-3491AF73F8D5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CE3B5A5C-B0BB-4545-9D17-E328AF2CFB89">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4C7CBB3C-9FF3-4A01-9C4F-C5DFA0015493">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E21CB4DB-A2C9-4CC3-B22B-14CDE82FD386">
+          <dmn:text>"肝脏深部"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E43EE876-8624-4B50-9F9A-CE571F6D7F8E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_38AAFC80-67EB-4A77-9B2B-01C709936E5A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_556E8136-38B0-40E5-AC21-1DA070C5BF70">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D3738982-E493-4CD3-BE37-A95EAFD97DAE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_648B7ED3-7AA3-4737-AA6E-38E0E83ACE9B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_243F0289-91E2-4ABE-ACDC-10185678F20A">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5E12559B-B5EA-45F1-B6CB-D0D41A22A774">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CAA7CA17-76B9-4786-A8F2-A76A980BEF26">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_525F34FD-50F9-4258-A4EA-7A790E08AF32">
+          <dmn:text>"消融治疗"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_6CDEAEFC-8BE3-4615-AFF2-9AF7FE8E79A7">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_22E391F2-E81F-4219-B4AB-93FE7F3B9F62">
+          <dmn:text>"A"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_6D7FB862-46F9-42E3-8B93-79BFBA1EC0E2">
+          <dmn:text>14</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_850A82F6-BCF1-42DA-83BB-21820B4DDEB1">
+        <dmn:inputEntry id="_A7FB44FE-37BE-4607-B2FB-6A6C840D2966">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F17F5EAD-D7FC-4343-BD98-7614F09D0019">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C9ACB4C3-1319-44D4-A86B-B933CF8817BD">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_19A21231-D5BA-4992-81D8-7C30B7D73A5C">
+          <dmn:text>"中央型"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_58E4D712-5D6C-4D48-86CF-108405E6A976">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C04A2117-F661-4A75-8334-02A6124F3077">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_67849642-FBBF-4B4C-A9B2-58302683D286">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FEA95EC6-D9ED-46F8-9FAC-9232A74F03C2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_30D0B981-EC05-4E33-B048-C0D071B7EDC0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CDC22FB6-0E2D-4447-902A-E0606D79EF48">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_809EB94F-1056-4DB6-9317-6E6ECADFFDF4">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_782C7AB5-028A-4C6E-9420-63AC356B1585">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_62C60D68-4CCA-4E20-A09D-D002F4E90800">
+          <dmn:text>"手术切除联合消融治疗"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_D45322DC-B448-41C4-BB2D-6458E0E75662">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_E39FC6DE-2639-40D9-8362-0713639738AC">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_DB254F8E-627C-4C60-AAE0-FEE7004719DC">
+          <dmn:text>15</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_F5AD9270-DE62-496A-A90D-B2E289B5EBA6">
+        <dmn:inputEntry id="_660A38F5-5F8A-48CE-9137-6DC0FB60C4B3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_22811208-E379-4405-97B3-498A2CA0D009">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CB4777C2-7967-4A3F-A339-F20B0FDBC902">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_702C89CF-0314-4619-9E03-EFFE7EA4457A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_76D40E21-E1A8-4A91-81F9-FC1B92B5EC8D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5D647ED2-1A97-4034-A4FC-7E537647BE96">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_90AC48F1-D4EA-4677-B07C-05CD91D12507">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E4342300-E69F-4881-AC86-2B9BBEDC5D2E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5DCB9C50-2221-4CA7-B6BB-80C365C6FC45">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9A8957C0-54E1-4CDA-BD3C-DC8CF4B53372">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1C6ED5B5-A93B-404D-A598-509C289881BA">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4F2A697A-17AE-4696-9628-DE8142CE2EE0">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_12C04788-8294-4CD8-922E-81EE87430221">
+          <dmn:text>"手术切除联合消融治疗"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_484189D9-55FE-4B64-9350-3141AB5C0263">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_7838DC79-947C-433A-A04B-F8AF724DCA22">
+          <dmn:text>"A"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_3F8E207D-52ED-4E53-B7C1-A43636DB1BAA">
+          <dmn:text>16</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_230B5C4C-0DD0-435D-A252-46AF1622D0CC">
+        <dmn:inputEntry id="_536ECA68-3BBA-4CFD-A3A0-3598C8D3DC36">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_72D821E4-99E1-49CD-AC06-46B0EA465BA7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BB2176CE-97F5-4B54-AD78-536F8FEF61BF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EA378A21-B7A3-4E16-8DEA-1F7F5875F43E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BD4C999A-F66D-46A8-8682-4ADBD4202804">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2144327A-4322-4BF9-9EC2-B26A1E479F5B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D5D738EB-BA79-4696-9843-C6B27A2C4973">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DDDDC8DC-1499-45F6-83D9-CFD29C404109">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5D2BCEE6-ACB1-42C1-AE60-E015200C14D2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_045FC534-2A6F-4A49-8FC3-0672107DA648">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_657229DD-A3AD-47B2-9D06-37E280A6F53A">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_20B8FD94-DC15-4349-9C81-FC0482F343F0">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_A0487D06-DD14-43D6-8DF8-FEA627289D71">
+          <dmn:text>"手术切除"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_68436E00-4578-44AF-B661-55AD423F3BA0">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_70E58695-69A3-445D-A753-E26F82D81BFB">
+          <dmn:text>"A"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_55C112D4-DB93-4DC9-93DF-BF4A6F8A09A8">
+          <dmn:text>17</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_2CA81322-4784-46CA-94BA-FD9DF794F258">
+        <dmn:inputEntry id="_789B2552-62FA-4350-AE67-2F98F0E3FB20">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_67862A5D-0EEB-4380-8DB8-E4A945432C37">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_10838A7B-C336-435A-92C4-ADB7753D2275">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_98FBEC7B-0FBD-4030-B263-1149FE8E988D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_726D0847-691B-4726-9539-9E32F24A9FA0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FDDDAC5F-C0F9-432D-B3CD-FAB2FB8639DB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B3CB8F75-E5B1-4CD2-90D1-15D6913595BB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_621819D8-181A-4CAB-86E3-F505D4189BBF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5EA56F26-0B40-4D95-A8D1-BC3ADF1C7559">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_081BC918-0265-4852-A651-00FD3FA28852">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3A31F496-2284-423D-BEA4-3608372F94BE">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8F702702-99B4-4CF4-B1A8-D97E40BDB3BD">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_C6A3DA49-F64F-4B9E-8987-FC56C72A2BDA">
+          <dmn:text>"消融治疗"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_75AF1F75-17C6-43DF-A848-4FF9912C9830">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_947CED9C-8298-4CAD-94D5-C510A93DE349">
+          <dmn:text>"A"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_7A5E9234-887D-4DCB-A77F-A6B6EBB41AAB">
+          <dmn:text>18</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_1128A73D-02B6-4E0A-AAC6-4EB724E25AE6">
+        <dmn:inputEntry id="_239F6458-7D7E-45FA-9DD3-0A17B90E072E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9B0E5F8B-09D4-4EB1-BE83-A76D6E332259">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_559638B6-9417-47E0-9EE0-F8D5116E1B51">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_97090E6F-7325-47E7-B524-D137A509BCBE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F0F79297-4D7C-4319-9249-84030B628A67">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E3BC60D8-9E5A-435E-A455-475DF472E78F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3607E346-795A-4A1C-B7FF-4830444B8963">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0121E0F2-3A13-4F6B-B11A-6B8AC4B5080C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_79B4D858-46DB-45BC-8852-EB04ACA0E27C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5B53AB80-02A5-4B4D-A62D-F860A215825A">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_14475D4E-085D-4CA7-8274-F614A11F44BC">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2F0E360D-8B50-4604-AD04-17ABBE99C2D9">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_DDB368C4-21A3-4BBD-9154-2275CD7DAB83">
+          <dmn:text>"手术切除"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_DD2DC717-B328-4CDE-B98A-AB1677F1DDC0">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_9ECD3D0B-5196-47AC-8E2D-1D53C122D424">
+          <dmn:text>"A"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_D79F17FA-0EAA-432C-B628-AA2E0B809A99">
+          <dmn:text>19</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_7C8E117E-44C6-464E-A38C-7069C6498A25">
+        <dmn:inputEntry id="_10212203-7AEB-4B10-AC8C-F463F48A969C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_78C76AF1-3604-4B37-AE19-5550F89D0C65">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CC3C160B-07E2-4ACA-A4CB-B107ADA1190B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4E18688F-507E-41E0-9E03-3861FA1E24A4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9050BB53-0ABC-4D5B-A1BB-E962B3498704">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8478417F-A0D4-47EC-8B62-7CE9F73158CF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_735309E5-6DF5-4DA0-9806-9F7EC4519D97">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9A203539-D780-4CA6-B392-196D7F4E9821">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2BD9543E-1A33-47E2-A999-89E5E4D58365">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F3F9FB8D-4CC7-4A6B-9974-B28DC61AEF99">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9D64F59E-5C52-48AD-9B5A-C84D1C59764A">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9BF128DD-0F86-4C66-81BB-670FDB367710">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_3EAB999A-1F6B-4E27-96F0-449CBCB245DD">
+          <dmn:text>"消融治疗"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_3D9D584D-8E4B-4831-9126-67055B412A7F">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_873CE63F-018E-4A2F-8D26-604BB871C50C">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_B2FFCF85-B732-4F2B-B973-66EBB9D130BF">
+          <dmn:text>20</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_B77C925C-B6DB-480E-B73A-A033DFF463D7">
+        <dmn:inputEntry id="_74406273-579C-4E65-8E5A-A341673B75AB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_50562106-D901-409B-A97D-C6F54685CD8B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3EB4EA00-B94B-41C6-9B63-D337230396A0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B7BF5D4A-E4F2-40B2-989A-921E70BC13F9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_295BB94E-CF96-4E1D-8E6C-405833E3F61F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BACD6157-E845-45A5-9146-49BB7777BF90">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7AF49625-2DFF-4C9C-AB94-7043CB733572">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_22711F3E-3D1C-4897-B6AB-19D67291929B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_60F16F1D-8A81-48F6-8F35-3FC9C1784BFD">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C4046F29-A15D-411E-92B3-29892F4432D6">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EC256A49-C09F-4AA0-976C-37B9DA502CE8">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2B5F83D8-5249-4C3F-8CB4-2299CFE792DF">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_C32C3E03-757A-44D2-B9C5-2DF854AA44D4">
+          <dmn:text>"TACE"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_BAC13BC6-CBF3-4CA6-A039-6F73B0339A22">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_27301CFA-9DDF-4067-A0B4-CEB1002D5C01">
+          <dmn:text/>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_405366DC-C131-4EB6-93B1-476C48529DBA">
+          <dmn:text>21</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_2C794A9D-0CA6-4FC7-B435-12B3E56B4763">
+        <dmn:inputEntry id="_FB14BA6A-B88D-437C-93E4-476AF6885019">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C6E01433-CE1A-4F9A-83AF-D13338BEE1E5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_23923DA5-5065-48B1-9EEB-C50033059BE0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_49E39886-8558-406B-9E95-FED8C999CD9B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4058C624-5AD1-4AAE-B760-72BE36602E35">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A857B261-E23D-46FF-A79C-FC70F0BEA7CE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FD9090AF-9DA2-4DD4-9A40-CB611DBF18E4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_41DB5132-5596-4E0D-9D2A-73DB5C3973FF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BBBB7CC5-D917-4E48-A1E5-8013CC230EF2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_41F5910B-D415-4F30-9B33-5073374AE80B">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A7540A6D-97BB-425F-9AF4-5045EDA0D171">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BF711BC8-618D-4B85-B054-BD6AB6D5A846">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_B1E2516B-51C4-4AE8-82F3-E92929457693">
+          <dmn:text>"外放射治疗"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_FDF8CC70-6747-4CCC-B6BF-346F743CA07C">
+          <dmn:text>2</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_88A4FFBC-C2B4-42DC-BFC2-37E1F86BC41A">
+          <dmn:text>"B"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_4469312D-E688-4715-A207-8F4677609BE4">
+          <dmn:text>22</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_42C74FED-5325-45EC-ACD7-1F1D791DD149">
+        <dmn:inputEntry id="_8871F5C0-D6FF-420D-835A-E4ACA4A81A16">
+          <dmn:text>"B"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3A5FA582-EDCF-4A80-8E57-A02B81618C7D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FA94FE75-7F84-44A7-AF56-BCC547DBB4D6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_372EA9EE-A565-42C4-8758-9EF095FC894C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1EACA246-87D4-4B61-9913-BA3DE57D8FE7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_06AFEC7D-BF62-4DE7-909B-D7FA83D49104">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E43AD967-FABD-4B4E-924B-F3708F69F044">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C0819375-C2A4-4F3E-988B-F35C8A36710D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BD61F149-D26F-481B-88F1-1C3BD086EDBA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_525FA05D-4710-47EB-A02A-6590C45FDEAA">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8BC9FFC1-2C24-45D9-9BF3-F82C151E6E06">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A197236A-5790-4130-8940-E43C39C11B15">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_DD1C37EA-A987-43B7-B2A2-ADB2DB14EB50">
+          <dmn:text>"肝移植"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_A76F974A-80DE-436A-B23D-00DB25088905">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_0C7F71A7-A006-4DDF-A4C0-346B31F46B94">
+          <dmn:text>"A"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_FA22823A-1DAD-4C98-A4BF-074971CA32A0">
+          <dmn:text>23</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_7FE5A781-82AB-4256-8726-AE886EBDA17F" name="DRG">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_9C1593B7-3E66-4973-9527-52FC79B7BD42">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>222</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-drg-_EA7C64EA-87AA-45AA-9D0B-B3FDDE4C447B" dmnElementRef="_EA7C64EA-87AA-45AA-9D0B-B3FDDE4C447B" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1265.2990654205607" y="600" width="141" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_5C3A298E-5592-49EE-B06D-E79D0F725538" dmnElementRef="_5C3A298E-5592-49EE-B06D-E79D0F725538" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1369" y="462.3421052631579" width="126" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_4F45D3F8-439F-4946-88ED-C43CC2BCA66A" dmnElementRef="_4F45D3F8-439F-4946-88ED-C43CC2BCA66A" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="843.2990654205607" y="0.6842105263157947" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_FCC1E723-F6F9-4AB5-997D-8375BAA73716" dmnElementRef="_FCC1E723-F6F9-4AB5-997D-8375BAA73716" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="973.2990654205607" y="23.684210526315795" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_6552AC37-110B-4C89-B4A7-2C2301BD1E3A" dmnElementRef="_6552AC37-110B-4C89-B4A7-2C2301BD1E3A" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1458" y="308.3421052631579" width="120" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_66947A87-A35E-41F4-92A4-6584181B0678" dmnElementRef="_66947A87-A35E-41F4-92A4-6584181B0678" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="746.75" y="92.34210526315789" width="107" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_2B274689-6297-4E38-9002-EAB3908D8705" dmnElementRef="_2B274689-6297-4E38-9002-EAB3908D8705" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1156.9944774851317" y="0.6842105263157947" width="104.54545454545456" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_DA22A268-B21F-4A8E-9323-3AD49C1AFCD3" dmnElementRef="_DA22A268-B21F-4A8E-9323-3AD49C1AFCD3" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="658" y="360.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_48E82F1F-54C0-4CFF-91CC-B0AC5E42D638" dmnElementRef="_48E82F1F-54C0-4CFF-91CC-B0AC5E42D638" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="838.5516142735769" y="564" width="135.36363636363637" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_DB1EA886-5AB5-4E45-9BE5-540B8CCC307F" dmnElementRef="_DB1EA886-5AB5-4E45-9BE5-540B8CCC307F" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="713.5981308411215" y="428.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_38B0568C-433F-45EA-AAA9-EB88802AB93F" dmnElementRef="_38B0568C-433F-45EA-AAA9-EB88802AB93F" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1310.090909090909" y="120.68421052631581" width="131" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_9252FDE3-3E86-4C0F-8766-86D9794D4317" dmnElementRef="_9252FDE3-3E86-4C0F-8766-86D9794D4317" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1069.2990654205607" y="583" width="144" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_D134252D-AB8F-4E01-B19A-308D58522C21" dmnElementRef="_D134252D-AB8F-4E01-B19A-308D58522C21" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1135" y="275" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-drg-_B96C372E-F2A1-4CBF-90E3-42583A14CDFF" dmnElementRef="_B96C372E-F2A1-4CBF-90E3-42583A14CDFF">
+        <di:waypoint x="708" y="385.3421052631579"/>
+        <di:waypoint x="1185" y="300"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_A112C008-BF52-4CA6-AB74-004255F1EBF0" dmnElementRef="_A112C008-BF52-4CA6-AB74-004255F1EBF0">
+        <di:waypoint x="1141.2990654205607" y="608"/>
+        <di:waypoint x="1185" y="300"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_162D93F7-C9A3-4F2F-BD7E-83BB05D4EAC2" dmnElementRef="_162D93F7-C9A3-4F2F-BD7E-83BB05D4EAC2">
+        <di:waypoint x="1518" y="333.3421052631579"/>
+        <di:waypoint x="1185" y="300"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_DC0DC9FF-AC2F-4BB8-91A0-2EF98F9DCED2" dmnElementRef="_DC0DC9FF-AC2F-4BB8-91A0-2EF98F9DCED2">
+        <di:waypoint x="763.5981308411215" y="453.3421052631579"/>
+        <di:waypoint x="1185" y="300"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_5FA28135-D89E-4002-9181-7759F4268F9D" dmnElementRef="_5FA28135-D89E-4002-9181-7759F4268F9D">
+        <di:waypoint x="1023.2990654205607" y="48.684210526315795"/>
+        <di:waypoint x="1185" y="300"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_8579536C-248C-49E7-ACEE-766A31047B40" dmnElementRef="_8579536C-248C-49E7-ACEE-766A31047B40">
+        <di:waypoint x="893.2990654205607" y="25.684210526315795"/>
+        <di:waypoint x="1185" y="300"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_F38060A0-D027-47A2-88BF-C0A238ED7070" dmnElementRef="_F38060A0-D027-47A2-88BF-C0A238ED7070">
+        <di:waypoint x="800.25" y="117.34210526315789"/>
+        <di:waypoint x="1185" y="300"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_8216C77A-F259-444E-96C5-2CA29A878F81" dmnElementRef="_8216C77A-F259-444E-96C5-2CA29A878F81">
+        <di:waypoint x="1209.267204757859" y="25.684210526315795"/>
+        <di:waypoint x="1185" y="300"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_A49A36BD-C9FA-4341-B507-F84101D5C833" dmnElementRef="_A49A36BD-C9FA-4341-B507-F84101D5C833">
+        <di:waypoint x="906.2334324553951" y="589"/>
+        <di:waypoint x="1185" y="300"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_77E6D4C5-570D-43E9-905E-4F076BF5E8EC" dmnElementRef="_77E6D4C5-570D-43E9-905E-4F076BF5E8EC">
+        <di:waypoint x="1432" y="487.3421052631579"/>
+        <di:waypoint x="1185" y="300"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_678F4C9C-53D0-4B4D-9B1F-2972AAB95753" dmnElementRef="_678F4C9C-53D0-4B4D-9B1F-2972AAB95753">
+        <di:waypoint x="1335.7990654205607" y="625"/>
+        <di:waypoint x="1185" y="300"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_5502DE8A-5910-4781-A633-3137BD6EA270" dmnElementRef="_5502DE8A-5910-4781-A633-3137BD6EA270">
+        <di:waypoint x="1375.590909090909" y="145.6842105263158"/>
+        <di:waypoint x="1185" y="300"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
 </dmn:definitions>
