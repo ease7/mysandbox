@@ -6,6 +6,7 @@
     <dmn:variable id="_B2D24A22-F44C-4BF0-B194-C4C42451D5F6" name="全身状况" typeRef="number"/>
   </dmn:inputData>
   <dmn:decision id="_FEDAB932-D303-490C-91E6-A31C28AF8461" name="CNLC分期">
+    <dmn:description>输入必填内容获取患者CNLC分期</dmn:description>
     <dmn:extensionElements/>
     <dmn:variable id="_64158FC1-DB4C-4B91-98BC-77E2E840EC58" name="CNLC分期" typeRef="string"/>
     <dmn:informationRequirement id="_4612D716-F1D7-494D-A49E-4BCA8600FC53">
@@ -319,17 +320,7 @@
     <dmndi:DMNDiagram id="_2248A8F4-6CB5-4FFA-B62D-E9226016FF8B" name="DRG">
       <di:extension>
         <kie:ComponentsWidthsExtension>
-          <kie:ComponentWidths dmnElementRef="_C9DDD23D-6D8D-4B67-B70C-312D02AAB2EA">
-            <kie:width>50</kie:width>
-            <kie:width>100</kie:width>
-            <kie:width>100</kie:width>
-            <kie:width>100</kie:width>
-            <kie:width>134</kie:width>
-            <kie:width>100</kie:width>
-            <kie:width>100</kie:width>
-            <kie:width>100</kie:width>
-            <kie:width>444</kie:width>
-          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_C9DDD23D-6D8D-4B67-B70C-312D02AAB2EA"/>
         </kie:ComponentsWidthsExtension>
       </di:extension>
       <dmndi:DMNShape id="dmnshape-drg-_2FAF3371-9BC7-424C-99AD-683E3583ADB1" dmnElementRef="_2FAF3371-9BC7-424C-99AD-683E3583ADB1" isCollapsed="false">
@@ -347,7 +338,7 @@
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="496" y="237" width="100" height="50"/>
+        <dc:Bounds x="495" y="236" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-drg-_34CB0A89-031B-4FFB-8439-5D2F3794991A" dmnElementRef="_34CB0A89-031B-4FFB-8439-5D2F3794991A" isCollapsed="false">
@@ -397,51 +388,28 @@
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="dmnedge-drg-_4612D716-F1D7-494D-A49E-4BCA8600FC53" dmnElementRef="_4612D716-F1D7-494D-A49E-4BCA8600FC53">
         <di:waypoint x="696" y="397"/>
-        <di:waypoint x="546" y="262"/>
+        <di:waypoint x="545" y="261"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_25536C35-3A1A-4CF6-8D92-089174C76678" dmnElementRef="_25536C35-3A1A-4CF6-8D92-089174C76678">
         <di:waypoint x="408" y="107"/>
-        <di:waypoint x="546" y="262"/>
+        <di:waypoint x="545" y="261"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_C3B9CE55-3A83-4B47-84CE-94C7C1F3390B" dmnElementRef="_C3B9CE55-3A83-4B47-84CE-94C7C1F3390B">
         <di:waypoint x="544.2990654205607" y="107"/>
-        <di:waypoint x="546" y="262"/>
+        <di:waypoint x="545" y="261"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_1EC2C7C5-7306-4AE9-ADD5-1595D2BDE71C" dmnElementRef="_1EC2C7C5-7306-4AE9-ADD5-1595D2BDE71C">
         <di:waypoint x="696" y="107"/>
-        <di:waypoint x="546" y="262"/>
+        <di:waypoint x="545" y="261"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_AF6424DD-2A20-4DFA-9F34-9BD607633188" dmnElementRef="_AF6424DD-2A20-4DFA-9F34-9BD607633188">
         <di:waypoint x="546" y="397.3421052631579"/>
-        <di:waypoint x="546" y="262"/>
+        <di:waypoint x="545" y="261"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_07EF4767-E6D5-4CEA-BE53-7030F0298E65" dmnElementRef="_07EF4767-E6D5-4CEA-BE53-7030F0298E65">
         <di:waypoint x="407.5981308411215" y="397"/>
-        <di:waypoint x="546" y="262"/>
+        <di:waypoint x="545" y="261"/>
       </dmndi:DMNEdge>
-    </dmndi:DMNDiagram>
-    <dmndi:DMNDiagram id="_0FA7D9BD-F78C-4E62-8194-0E90568FE458" name="new-diagram">
-      <di:extension>
-        <kie:ComponentsWidthsExtension/>
-      </di:extension>
-      <dmndi:DMNShape id="dmnshape-new-diagram-_07B16A18-ED5B-45BA-8AEA-06F473290EFF" dmnElementRef="_07B16A18-ED5B-45BA-8AEA-06F473290EFF" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="165" y="280" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-new-diagram-2-_07B16A18-ED5B-45BA-8AEA-06F473290EFF" dmnElementRef="_07B16A18-ED5B-45BA-8AEA-06F473290EFF" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="165" y="280" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
 </dmn:definitions>
