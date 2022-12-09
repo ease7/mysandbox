@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="Nephrology_RuleEngine"
+                 xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2"
+                 xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/"
+                 xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
+                 id="_A3B3933B-01A7-4F2C-817D-F2A59742B76A" name="CNLC"
+                 typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="rules.CNLC.RuleEngine.dmn">
+    <dmn:extensionElements/>
+
+    <dmn:inputData id="_2FAF3371-9BC7-424C-99AD-683E3583ADB1" name="全身状况">
+        <dmn:extensionElements/>
+        <dmn:variable id="_B2D24A22-F44C-4BF0-B194-C4C42451D5F6" name="全身状况" typeRef="number"/>
+    </dmn:inputData>
+    <dmn:decision id="_FEDAB932-D303-490C-91E6-A31C28AF8461" name="CNLC分期">
+        <dmn:extensionElements/>
+        <dmn:variable id="_64158FC1-DB4C-4B91-98BC-77E2E840EC58" name="CNLC分期" typeRef="string"/>
+        <dmn:informationRequirement id="_25536C35-3A1A-4CF6-8D92-089174C76678">
+            <dmn:requiredInput href="#_2FAF3371-9BC7-424C-99AD-683E3583ADB1"/>
+        </dmn:informationRequirement>
+        <dmn:informationRequirement id="_4612D716-F1D7-494D-A49E-4BCA8600FC53">
+            <dmn:requiredInput href="#_07B16A18-ED5B-45BA-8AEA-06F473290EFF"/>
+        </dmn:informationRequirement>
+        <dmn:informationRequirement id="_C3B9CE55-3A83-4B47-84CE-94C7C1F3390B">
+            <dmn:requiredInput href="#_34CB0A89-031B-4FFB-8439-5D2F3794991A"/>
+        </dmn:informationRequirement>
+        <dmn:informationRequirement id="_1EC2C7C5-7306-4AE9-ADD5-1595D2BDE71C">
+            <dmn:requiredInput href="#_6C6E9B5B-E8DA-427D-818C-8175529B8530"/>
+        </dmn:informationRequirement>
+        <dmn:informationRequirement id="_AF6424DD-2A20-4DFA-9F34-9BD607633188">
+            <dmn:requiredInput href="#_7E8628B6-E92A-4A18-B471-5AF1575D54DF"/>
+        </dmn:informationRequirement>
+        <dmn:informationRequirement id="_5D1CD813-BED4-4F6A-B6EC-5E91268B6C6C">
+            <dmn:requiredInput href="#_823C967F-76E3-41F9-9B69-491E06C3B39D"/>
+        </dmn:informationRequirement>
+        <dmn:decisionTable id="_C9DDD23D-6D8D-4B67-B70C-312D02AAB2EA" hitPolicy="UNIQUE"
+                           preferredOrientation="Rule-as-Row">
+            <dmn:input id="_C6491AC9-D692-48EC-A2A9-85EED0507246">
+                <dmn:inputExpression id="_B08518B4-DE22-49E2-BA8B-EA4A2095979C" typeRef="number">
+                    <dmn:text>全身状况</dmn:text>
+                </dmn:inputExpression>
+            </dmn:input>
+            <dmn:input id="_9A960B45-EC55-4F6C-B5C0-31083913D29A">
+                <dmn:inputExpression id="_FDA333D9-C170-433D-A827-9F4AE8D9F4E5" typeRef="string">
+                    <dmn:text>肝功能</dmn:text>
+                </dmn:inputExpression>
+            </dmn:input>
+            <dmn:input id="_C77DA899-80F2-40EF-910D-F3ABF2FC0F3E">
+                <dmn:inputExpression id="_523EBCAE-F228-4348-BF3B-B42E5B9D4F16" typeRef="boolean">
+                    <dmn:text>肝外转移</dmn:text>
+                </dmn:inputExpression>
+            </dmn:input>
+            <dmn:input id="_C68751E9-316A-4657-9CE9-F85CFB443F41">
+                <dmn:inputExpression id="_A49EA0E9-8E33-45D6-9A27-6CABEA2A3786" typeRef="boolean">
+                    <dmn:text>影像学可见脉管癌栓</dmn:text>
+                </dmn:inputExpression>
+            </dmn:input>
+            <dmn:input id="_C2BF5943-B632-4244-883E-ACF71D7B2C88">
+                <dmn:inputExpression id="_14D23C27-B3C3-464D-B4BC-5438F7FFE050" typeRef="number">
+                    <dmn:text>肿瘤数目</dmn:text>
+                </dmn:inputExpression>
+            </dmn:input>
+            <dmn:input id="_9EDB8DAD-656B-4338-BCFE-03CE60E0E526">
+                <dmn:inputExpression id="_7A32EFF7-A34C-4D1E-B551-AD224ED5B54C" typeRef="number">
+                    <dmn:text>肿瘤大小</dmn:text>
+                </dmn:inputExpression>
+            </dmn:input>
+            <dmn:output id="_C489B240-53FE-4CE4-ACE7-4DC253DA179A"/>
+            <dmn:annotation name="annotation-1"/>
+            <dmn:rule id="_67692ADC-27EB-408F-AF76-CF575C1EF165">
+                <dmn:inputEntry id="_FBA5646D-EC77-480F-A673-5337A4D314FC">
+                    <dmn:text>[0..2]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_F823B180-C008-46AE-A80B-8D92F2E6566B">
+                    <dmn:text>["A","B"]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_26D845D0-CD7A-48F8-A7E3-EA2437594B8F">
+                    <dmn:text>false</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_2552C6C7-3AE4-493D-BCFE-6056DDBCD89C">
+                    <dmn:text>false</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_D48D3423-83E0-4975-9540-4357ED1CAE39">
+                    <dmn:text>[1]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_261261E4-A183-4F04-866D-5FCD3FBDE206">
+                    <dmn:text>&lt;=5</dmn:text>
+                </dmn:inputEntry>
+                <dmn:outputEntry id="_6409CF52-2AE6-4AE8-A271-0FC6E5C8ADA0">
+                    <dmn:text>"Ⅰ a期"</dmn:text>
+                </dmn:outputEntry>
+                <dmn:annotationEntry>
+                    <dmn:text/>
+                </dmn:annotationEntry>
+            </dmn:rule>
+            <dmn:rule id="_8CE7073E-2DCF-4D7A-87D8-2B95EE2570BA">
+                <dmn:inputEntry id="_A3DD1F14-8876-4957-B8A2-A0C78E93B501">
+                    <dmn:text>[0..2]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_2AEA6095-925F-4023-AC03-BF7DF54B06D9">
+                    <dmn:text>["A","B"]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_6BDC44DD-E80A-4D85-80FD-002EAF552966">
+                    <dmn:text>false</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_1616D4EE-B4E1-4134-BEAC-2208D79FA92C">
+                    <dmn:text>false</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_1A680EBE-18CF-4C1A-B685-7AFDD6B07761">
+                    <dmn:text>[1]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_346D255D-879F-4A7A-B4A3-495189CF62CD">
+                    <dmn:text>&gt;5</dmn:text>
+                </dmn:inputEntry>
+                <dmn:outputEntry id="_DE89C9C9-921A-4C66-8235-D1F2585C1E98">
+                    <dmn:text>"Ⅰ b期"</dmn:text>
+                </dmn:outputEntry>
+                <dmn:annotationEntry>
+                    <dmn:text/>
+                </dmn:annotationEntry>
+            </dmn:rule>
+            <dmn:rule id="_3FDFD020-3479-4E53-BEDD-D71A84F4861F">
+                <dmn:inputEntry id="_A3AB38E8-3EB4-4AAA-A1FB-05838D0A69D9">
+                    <dmn:text>[0..2]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_B9B2F8FE-BAED-4258-A5F3-8EA36FE3C5CE">
+                    <dmn:text>["A","B"]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_7A1EEFEC-155D-4CB3-81B3-9B078EF7E8B2">
+                    <dmn:text>false</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_CA11A388-3103-4568-8040-07C7710F00C1">
+                    <dmn:text>false</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_6A6484D3-E2AA-4167-8C82-578B7B28AD9B">
+                    <dmn:text>[2,3]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_D45BD97D-F02E-42BF-9170-73E09509A88F">
+                    <dmn:text>&lt;=3</dmn:text>
+                </dmn:inputEntry>
+                <dmn:outputEntry id="_BE8DC6AD-E65C-4012-96C9-638662BDD3AC">
+                    <dmn:text>"Ⅰ b期"</dmn:text>
+                </dmn:outputEntry>
+                <dmn:annotationEntry>
+                    <dmn:text/>
+                </dmn:annotationEntry>
+            </dmn:rule>
+            <dmn:rule id="_253CE4EE-41DC-4C20-9AC2-6BC5130CA5A3">
+                <dmn:inputEntry id="_CE505B33-0895-4332-8FA9-9FC7AE553E3E">
+                    <dmn:text>[0..2]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_72101343-55E7-4A85-8E8E-C9B1FACE14B3">
+                    <dmn:text>["A","B"]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_26804DCD-EC63-48AB-B0A5-F58908939BCE">
+                    <dmn:text>false</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_54B0BBB9-0C14-4826-91A2-8C1E1B73BB36">
+                    <dmn:text>false</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_54EDCF44-2E3D-46E2-9D3B-8668E1277A92">
+                    <dmn:text>[2,3]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_FB0587BB-DD73-479E-A0A6-CF0C54E628F8">
+                    <dmn:text>&gt;3</dmn:text>
+                </dmn:inputEntry>
+                <dmn:outputEntry id="_647F1E7B-8450-4314-A516-F9CD6E192580">
+                    <dmn:text>"Ⅱ a期"</dmn:text>
+                </dmn:outputEntry>
+                <dmn:annotationEntry>
+                    <dmn:text/>
+                </dmn:annotationEntry>
+            </dmn:rule>
+            <dmn:rule id="_3736F57C-9AE7-4AA2-998E-7EA72C2C5201">
+                <dmn:inputEntry id="_6EE4E040-9523-41BC-83A8-1C54361ACAA7">
+                    <dmn:text>[0..2]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_CF2527B6-38C7-446C-B8A8-6C87F7522FB1">
+                    <dmn:text>["A","B"]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_DFD37EB1-4C69-4040-BD6D-F81166E22D0C">
+                    <dmn:text>false</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_F89DC592-C85A-42EB-8800-53CABF536516">
+                    <dmn:text>false</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_6E3A2ADC-734F-44D7-B9B5-B6B219AC72DB">
+                    <dmn:text>&gt;=4</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_2590C267-D2D2-40E6-BAA0-FC1AC050C18F">
+                    <dmn:text>-</dmn:text>
+                </dmn:inputEntry>
+                <dmn:outputEntry id="_029DF621-CC93-4432-A8B4-770F95E83A13">
+                    <dmn:text>"Ⅱ b期"</dmn:text>
+                </dmn:outputEntry>
+                <dmn:annotationEntry>
+                    <dmn:text/>
+                </dmn:annotationEntry>
+            </dmn:rule>
+            <dmn:rule id="_C794E9F8-4D7E-4A8F-80E2-09B96F5FFEA8">
+                <dmn:inputEntry id="_6997C373-A447-4636-9EFA-6A76368D1883">
+                    <dmn:text>[0..2]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_68D6F801-60F3-4F15-AB8A-5BC9D622539D">
+                    <dmn:text>["A","B"]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_E5D83685-62DD-4A99-9DB5-F0EA5194A415">
+                    <dmn:text>false</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_194531B7-FEE3-4AD8-9EB8-D069F4C4A538">
+                    <dmn:text>true</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_ED6D95E9-D4D2-4A37-AD1B-6D35D8662610">
+                    <dmn:text>-</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_650F2078-D3CD-49BE-A830-F2E9ECB9B23A">
+                    <dmn:text>-</dmn:text>
+                </dmn:inputEntry>
+                <dmn:outputEntry id="_4CBB4995-32D5-4234-84DA-D8625D99D095">
+                    <dmn:text>"Ⅲ a期"</dmn:text>
+                </dmn:outputEntry>
+                <dmn:annotationEntry>
+                    <dmn:text/>
+                </dmn:annotationEntry>
+            </dmn:rule>
+            <dmn:rule id="_6F0CE1AF-2FFF-4776-A22E-EB9E855A41FD">
+                <dmn:inputEntry id="_D2DF9A8E-9202-461B-88BE-A6C769FE58BF">
+                    <dmn:text>[0..2]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_5A01A213-2F05-4A25-B140-2BA41F7A4B98">
+                    <dmn:text>["A","B"]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_1DCF52D3-5AAE-40F0-998C-14F2336D23D3">
+                    <dmn:text>true</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_16E2C6C6-26D6-4A74-866E-CE1632FF6B41">
+                    <dmn:text>-</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_CA751EE4-7A1A-4864-84DF-C40D864F62B5">
+                    <dmn:text>-</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_168AF8C8-E28D-4BD3-B56B-6440F48F2500">
+                    <dmn:text>-</dmn:text>
+                </dmn:inputEntry>
+                <dmn:outputEntry id="_7E267FD0-B256-4388-81CC-9F249D64BA16">
+                    <dmn:text>"Ⅲ b期"</dmn:text>
+                </dmn:outputEntry>
+                <dmn:annotationEntry>
+                    <dmn:text/>
+                </dmn:annotationEntry>
+            </dmn:rule>
+            <dmn:rule id="_43C097B2-A4D6-431C-81BC-455D0129BA46">
+                <dmn:inputEntry id="_FA7C5467-F055-4D73-94B9-5E38C9A644C1">
+                    <dmn:text>[0..2]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_9B53C74A-4CA8-4D5B-B7C3-40ECB7AD00C5">
+                    <dmn:text>["C"]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_BBA7BAE4-1FE0-430C-8111-35A0D76C284B">
+                    <dmn:text>-</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_F98DEFFC-E930-4EA5-941A-54482950E7FB">
+                    <dmn:text>-</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_494330A1-4F6F-4E27-BD2E-44ADD4380217">
+                    <dmn:text>-</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_960CC706-BFAD-4CF3-A9FE-EE29C5C615D4">
+                    <dmn:text>-</dmn:text>
+                </dmn:inputEntry>
+                <dmn:outputEntry id="_BC50E570-E561-4E94-85A4-5C041101066E">
+                    <dmn:text>"Ⅳ期"</dmn:text>
+                </dmn:outputEntry>
+                <dmn:annotationEntry>
+                    <dmn:text/>
+                </dmn:annotationEntry>
+            </dmn:rule>
+            <dmn:rule id="_41BAD1DF-4BBD-43C9-AEBF-E14C5F792794">
+                <dmn:inputEntry id="_27B9115B-FECA-43C4-BEEB-73FD7527C910">
+                    <dmn:text>[3..4]</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_60B7EC49-609A-42F5-B90D-168F9A893719">
+                    <dmn:text>-</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_DA12B1C9-C718-4CE5-B47A-4C5436296E29">
+                    <dmn:text>-</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_CF65B1F6-453C-434C-8B42-960A87BBFCD5">
+                    <dmn:text>-</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_2AD4DD32-7DB2-408C-9F5E-4969DDAF9F1D">
+                    <dmn:text>-</dmn:text>
+                </dmn:inputEntry>
+                <dmn:inputEntry id="_C8F1614A-ED42-4366-8B88-D1D682BD82F7">
+                    <dmn:text>-</dmn:text>
+                </dmn:inputEntry>
+                <dmn:outputEntry id="_BCD7F4ED-B1B2-4E8B-BF5A-501A905040B7">
+                    <dmn:text>"Ⅳ期"</dmn:text>
+                </dmn:outputEntry>
+                <dmn:annotationEntry>
+                    <dmn:text/>
+                </dmn:annotationEntry>
+            </dmn:rule>
+        </dmn:decisionTable>
+    </dmn:decision>
+    <dmn:inputData id="_34CB0A89-031B-4FFB-8439-5D2F3794991A" name="肝功能">
+        <dmn:extensionElements/>
+        <dmn:variable id="_DB801D32-6162-4B34-90A7-A6BD179F214A" name="肝功能" typeRef="string"/>
+    </dmn:inputData>
+    <dmn:inputData id="_6C6E9B5B-E8DA-427D-818C-8175529B8530" name="肝外转移">
+        <dmn:extensionElements/>
+        <dmn:variable id="_EBFAD6DF-A48A-489C-9979-B61748B74AED" name="肝外转移" typeRef="boolean"/>
+    </dmn:inputData>
+    <dmn:inputData id="_07B16A18-ED5B-45BA-8AEA-06F473290EFF" name="影像学可见脉管癌栓">
+        <dmn:extensionElements/>
+        <dmn:variable id="_D432B463-6114-4B66-9321-69F2C4D63EB9" name="影像学可见脉管癌栓" typeRef="boolean"/>
+    </dmn:inputData>
+    <dmn:inputData id="_7E8628B6-E92A-4A18-B471-5AF1575D54DF" name="肿瘤数目">
+        <dmn:extensionElements/>
+        <dmn:variable id="_77C36E34-610B-45A2-BE09-049BA79C13A1" name="肿瘤数目" typeRef="number"/>
+    </dmn:inputData>
+    <dmn:inputData id="_823C967F-76E3-41F9-9B69-491E06C3B39D" name="肿瘤大小">
+        <dmn:extensionElements/>
+        <dmn:variable id="_7F8A90FF-1F29-4584-8B98-5ED0FCA1C4DB" name="肿瘤大小" typeRef="number"/>
+    </dmn:inputData>
+    <dmndi:DMNDI>
+        <dmndi:DMNDiagram id="_2248A8F4-6CB5-4FFA-B62D-E9226016FF8B" name="DRG">
+            <di:extension>
+                <kie:ComponentsWidthsExtension>
+                    <kie:ComponentWidths dmnElementRef="_C9DDD23D-6D8D-4B67-B70C-312D02AAB2EA">
+                        <kie:width>50</kie:width>
+                        <kie:width>100</kie:width>
+                        <kie:width>100</kie:width>
+                        <kie:width>100</kie:width>
+                        <kie:width>134</kie:width>
+                        <kie:width>100</kie:width>
+                        <kie:width>100</kie:width>
+                        <kie:width>100</kie:width>
+                        <kie:width>444</kie:width>
+                    </kie:ComponentWidths>
+                </kie:ComponentsWidthsExtension>
+            </di:extension>
+            <dmndi:DMNShape xmlns:p0="https://kiegroup.org/dmn/_7D5092CC-7784-4DD7-9C95-4BAE761F9D09"
+                            id="dmnshape-drg-_2FAF3371-9BC7-424C-99AD-683E3583ADB1"
+                            dmnElementRef="p0:_2FAF3371-9BC7-424C-99AD-683E3583ADB1" isCollapsed="false">
+                <dmndi:DMNStyle>
+                    <dmndi:FillColor red="255" green="255" blue="255"/>
+                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
+                    <dmndi:FontColor red="0" green="0" blue="0"/>
+                </dmndi:DMNStyle>
+                <dc:Bounds x="547" y="289" width="100" height="50"/>
+                <dmndi:DMNLabel/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape xmlns:p1="https://kiegroup.org/dmn/_7D5092CC-7784-4DD7-9C95-4BAE761F9D09"
+                            id="dmnshape-drg-_FEDAB932-D303-490C-91E6-A31C28AF8461"
+                            dmnElementRef="p1:_FEDAB932-D303-490C-91E6-A31C28AF8461" isCollapsed="false">
+                <dmndi:DMNStyle>
+                    <dmndi:FillColor red="255" green="255" blue="255"/>
+                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
+                    <dmndi:FontColor red="0" green="0" blue="0"/>
+                </dmndi:DMNStyle>
+                <dc:Bounds x="391" y="96" width="100" height="50"/>
+                <dmndi:DMNLabel/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape xmlns:p2="https://kiegroup.org/dmn/_7D5092CC-7784-4DD7-9C95-4BAE761F9D09"
+                            id="dmnshape-drg-_34CB0A89-031B-4FFB-8439-5D2F3794991A"
+                            dmnElementRef="p2:_34CB0A89-031B-4FFB-8439-5D2F3794991A" isCollapsed="false">
+                <dmndi:DMNStyle>
+                    <dmndi:FillColor red="255" green="255" blue="255"/>
+                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
+                    <dmndi:FontColor red="0" green="0" blue="0"/>
+                </dmndi:DMNStyle>
+                <dc:Bounds x="674" y="289" width="100" height="50"/>
+                <dmndi:DMNLabel/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape xmlns:p3="https://kiegroup.org/dmn/_7D5092CC-7784-4DD7-9C95-4BAE761F9D09"
+                            id="dmnshape-drg-_6C6E9B5B-E8DA-427D-818C-8175529B8530"
+                            dmnElementRef="p3:_6C6E9B5B-E8DA-427D-818C-8175529B8530" isCollapsed="false">
+                <dmndi:DMNStyle>
+                    <dmndi:FillColor red="255" green="255" blue="255"/>
+                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
+                    <dmndi:FontColor red="0" green="0" blue="0"/>
+                </dmndi:DMNStyle>
+                <dc:Bounds x="813" y="289" width="100" height="50"/>
+                <dmndi:DMNLabel/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape xmlns:p4="https://kiegroup.org/dmn/_7D5092CC-7784-4DD7-9C95-4BAE761F9D09"
+                            id="dmnshape-drg-_07B16A18-ED5B-45BA-8AEA-06F473290EFF"
+                            dmnElementRef="p4:_07B16A18-ED5B-45BA-8AEA-06F473290EFF" isCollapsed="false">
+                <dmndi:DMNStyle fontSize="10">
+                    <dmndi:FillColor red="207" green="42" blue="42"/>
+                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
+                    <dmndi:FontColor red="152" green="52" blue="52"/>
+                </dmndi:DMNStyle>
+                <dc:Bounds x="381" y="289" width="100" height="50"/>
+                <dmndi:DMNLabel/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape xmlns:p5="https://kiegroup.org/dmn/_7D5092CC-7784-4DD7-9C95-4BAE761F9D09"
+                            id="dmnshape-drg-_7E8628B6-E92A-4A18-B471-5AF1575D54DF"
+                            dmnElementRef="p5:_7E8628B6-E92A-4A18-B471-5AF1575D54DF" isCollapsed="false">
+                <dmndi:DMNStyle>
+                    <dmndi:FillColor red="255" green="255" blue="255"/>
+                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
+                    <dmndi:FontColor red="0" green="0" blue="0"/>
+                </dmndi:DMNStyle>
+                <dc:Bounds x="233" y="299.3421052631579" width="100" height="50"/>
+                <dmndi:DMNLabel/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape xmlns:p6="https://kiegroup.org/dmn/_7D5092CC-7784-4DD7-9C95-4BAE761F9D09"
+                            id="dmnshape-drg-_823C967F-76E3-41F9-9B69-491E06C3B39D"
+                            dmnElementRef="p6:_823C967F-76E3-41F9-9B69-491E06C3B39D" isCollapsed="false">
+                <dmndi:DMNStyle>
+                    <dmndi:FillColor red="255" green="255" blue="255"/>
+                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
+                    <dmndi:FontColor red="0" green="0" blue="0"/>
+                </dmndi:DMNStyle>
+                <dc:Bounds x="86.59813084112147" y="299" width="100" height="50"/>
+                <dmndi:DMNLabel/>
+            </dmndi:DMNShape>
+            <dmndi:DMNEdge xmlns:p7="https://kiegroup.org/dmn/_7D5092CC-7784-4DD7-9C95-4BAE761F9D09"
+                           id="dmnedge-drg-_25536C35-3A1A-4CF6-8D92-089174C76678"
+                           dmnElementRef="p7:_25536C35-3A1A-4CF6-8D92-089174C76678">
+                <di:waypoint x="597" y="314"/>
+                <di:waypoint x="441" y="146"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge xmlns:p8="https://kiegroup.org/dmn/_7D5092CC-7784-4DD7-9C95-4BAE761F9D09"
+                           id="dmnedge-drg-_4612D716-F1D7-494D-A49E-4BCA8600FC53"
+                           dmnElementRef="p8:_4612D716-F1D7-494D-A49E-4BCA8600FC53">
+                <di:waypoint x="431" y="314"/>
+                <di:waypoint x="441" y="146"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge xmlns:p9="https://kiegroup.org/dmn/_7D5092CC-7784-4DD7-9C95-4BAE761F9D09"
+                           id="dmnedge-drg-_C3B9CE55-3A83-4B47-84CE-94C7C1F3390B"
+                           dmnElementRef="p9:_C3B9CE55-3A83-4B47-84CE-94C7C1F3390B">
+                <di:waypoint x="724" y="314"/>
+                <di:waypoint x="441" y="146"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge xmlns:p10="https://kiegroup.org/dmn/_7D5092CC-7784-4DD7-9C95-4BAE761F9D09"
+                           id="dmnedge-drg-_1EC2C7C5-7306-4AE9-ADD5-1595D2BDE71C"
+                           dmnElementRef="p10:_1EC2C7C5-7306-4AE9-ADD5-1595D2BDE71C">
+                <di:waypoint x="863" y="314"/>
+                <di:waypoint x="441" y="146"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge xmlns:p11="https://kiegroup.org/dmn/_7D5092CC-7784-4DD7-9C95-4BAE761F9D09"
+                           id="dmnedge-drg-_AF6424DD-2A20-4DFA-9F34-9BD607633188"
+                           dmnElementRef="p11:_AF6424DD-2A20-4DFA-9F34-9BD607633188">
+                <di:waypoint x="283" y="324.3421052631579"/>
+                <di:waypoint x="441" y="146"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge xmlns:p12="https://kiegroup.org/dmn/_7D5092CC-7784-4DD7-9C95-4BAE761F9D09"
+                           id="dmnedge-drg-_5D1CD813-BED4-4F6A-B6EC-5E91268B6C6C"
+                           dmnElementRef="p12:_5D1CD813-BED4-4F6A-B6EC-5E91268B6C6C">
+                <di:waypoint x="136.59813084112147" y="324"/>
+                <di:waypoint x="441" y="146"/>
+            </dmndi:DMNEdge>
+        </dmndi:DMNDiagram>
+        <dmndi:DMNDiagram id="_0FA7D9BD-F78C-4E62-8194-0E90568FE458" name="new-diagram">
+            <di:extension>
+                <kie:ComponentsWidthsExtension/>
+            </di:extension>
+            <dmndi:DMNShape xmlns:p13="https://kiegroup.org/dmn/_7D5092CC-7784-4DD7-9C95-4BAE761F9D09"
+                            id="dmnshape-new-diagram-_07B16A18-ED5B-45BA-8AEA-06F473290EFF"
+                            dmnElementRef="p13:_07B16A18-ED5B-45BA-8AEA-06F473290EFF" isCollapsed="false">
+                <dmndi:DMNStyle>
+                    <dmndi:FillColor red="255" green="255" blue="255"/>
+                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
+                    <dmndi:FontColor red="0" green="0" blue="0"/>
+                </dmndi:DMNStyle>
+                <dc:Bounds x="165" y="280" width="100" height="50"/>
+                <dmndi:DMNLabel/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape xmlns:p14="https://kiegroup.org/dmn/_7D5092CC-7784-4DD7-9C95-4BAE761F9D09"
+                            id="dmnshape-new-diagram-2-_07B16A18-ED5B-45BA-8AEA-06F473290EFF"
+                            dmnElementRef="p14:_07B16A18-ED5B-45BA-8AEA-06F473290EFF" isCollapsed="false">
+                <dmndi:DMNStyle>
+                    <dmndi:FillColor red="255" green="255" blue="255"/>
+                    <dmndi:StrokeColor red="0" green="0" blue="0"/>
+                    <dmndi:FontColor red="0" green="0" blue="0"/>
+                </dmndi:DMNStyle>
+                <dc:Bounds x="165" y="280" width="100" height="50"/>
+                <dmndi:DMNLabel/>
+            </dmndi:DMNShape>
+        </dmndi:DMNDiagram>
+    </dmndi:DMNDI>
+</dmn:definitions>
